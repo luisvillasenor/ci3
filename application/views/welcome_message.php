@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -81,6 +81,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
+
+          <ul class="nav nav-tabs tabs-up" id="friends">
+			      <li><a href="http://localhost/ci3/license.txt" data-target="#contacts" class="media_node active span" id="contacts_tab" data-toggle="tabajax" rel="tooltip"> Contacts </a></li>
+			      <li><a href="http://localhost/ci3/" data-target="#friends_list" class="media_node span" id="friends_list_tab" data-toggle="tabajax" rel="tooltip"> Friends list</a></li>
+			      <li><a href="http://localhost/ci3/" data-target="#awaiting_request" class="media_node span" id="awaiting_request_tab" data-toggle="tabajax" rel="tooltip">Awaiting request</a></li>
+			</ul>
+
+			<div class="tab-content">
+			<div class="tab-pane active" id="contacts">
+
+			      </div>
+			      <div class="tab-pane" id="friends_list">
+
+			      </div>
+			      <div class="tab-pane  urlbox span8" id="awaiting_request">
+
+			      </div>
+			    </div>
+			
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -241,10 +260,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="ie10-viewport-bug-workaround.js"></script>
+
+
+    <script type="text/javascript">
+			$('[data-toggle="tabajax"]').click(function(e) {
+			    var $this = $(this),
+			        loadurl = $this.attr('href'),
+			        targ = $this.attr('data-target');
+
+			    $.get(loadurl, function(data) {
+			        $(targ).html(data);
+			    });
+
+			    $this.tab('show');
+			    return false;
+			});
+			</script>
+
+
+			
   </body>
 </html>
