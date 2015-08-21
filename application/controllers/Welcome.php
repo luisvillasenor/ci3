@@ -20,6 +20,17 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->view('header');
+		$this->load->view('navbar');
 		$this->load->view('welcome_message');
+		$this->load->view('footer');
+	}
+	public function profile()
+	{
+		$this->load->view('header');
+		$this->load->view('navbar');
+		$this->load->view('profile_view');
+		$this->load->view('footer');		
+		
 	}
 }
