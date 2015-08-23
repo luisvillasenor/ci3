@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Pages extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,21 +18,24 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('header');
-		$this->load->view('navbar');
-		$this->load->view('welcome_message');
-		$this->load->view('footer');
-	}
+	public function view($page = 'home')
+    {
 
-	public function gestalt()
-	{
-		$this->load->view('header');
-		$this->load->view('navbar');
-		$this->load->view('gestalt');
-		$this->load->view('footer');
-	}
+    	if ( ! file_exists(APPPATH.'/views/pages/'.$page.'.php'))
+        {
+                // Whoops, we don't have a page for that!
+                show_404();
+        }
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar');
+        $this->load->view('pages/'.$page, $data);
+        $this->load->view('templates/footer', $data);
+
+    }
+
 
 
 }
