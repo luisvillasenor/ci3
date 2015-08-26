@@ -3,63 +3,107 @@
         
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Iniciar Evaluación <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li class="active"><a href="#">Crear Expediente <span class="sr-only">(current)</span></a></li>
+            
+            <li><a href="mispacientes">Mis Pacientes</a></li>
+            
           </ul>
         </div>
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
+        <form>
           <div id="rootwizard">
-              <div class="navbar">
-                <div class="navbar-inner">
-                  <div class="container">
               <ul>
-                  <li><a href="#tab1" data-toggle="tab">First</a></li>
-                <li><a href="#tab2" data-toggle="tab">Second</a></li>
-                <li><a href="#tab3" data-toggle="tab">Third</a></li>
-                <li><a href="#tab4" data-toggle="tab">Forth</a></li>
-                <li><a href="#tab5" data-toggle="tab">Fifth</a></li>
-                <li><a href="#tab6" data-toggle="tab">Sixth</a></li>
-                <li><a href="#tab7" data-toggle="tab">Seventh</a></li>
+                <li><a href="#tab1" data-toggle="tab"><span class="label">1</span> Datos del Paciente</a></li>
+                <li><a href="#tab2" data-toggle="tab"><span class="label">2</span> Datos del Aplicador</a></li>
+                <li><a href="#tab3" data-toggle="tab"><span class="label">3</span> Generar Expediente</a></li>
               </ul>
-               </div>
-                </div>
-              </div>
               <div class="tab-content">
                   <div class="tab-pane" id="tab1">
-                    1
+                  <p>
+                    <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                      <div class="panel-heading"></div>
+                      <div class="panel-body">
+                          <div class="page-header">
+                            <h1>Carga de Datos del Paciente <small>Datos generales</small></h1>
+                          </div>
+                          
+                            <div class="form-group">
+                              <label for="nombre">Nombre completo</label>
+                              <input type="email" class="form-control" id="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                              <label for="edad">Edad</label>
+                              <input type="text" class="form-control" id="edad" placeholder="Edad">
+                            </div>
+                            
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> Masculino
+                              </label>
+                            </div>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> Femenino
+                              </label>
+                            </div>                          
+                      </div>
+                    </div>
                   </div>
                   <div class="tab-pane" id="tab2">
-                    2
+                    <p>
+                    <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                      <div class="panel-heading"></div>
+                      <div class="panel-body">
+                          <div class="page-header">
+                            <h1>Carga de Datos del Aplicador y Grupo <small>Datos generales</small></h1>
+                          </div>
+                          
+                            <div class="form-group">
+                              <label for="nombre">Aplicador</label>
+                              <input type="email" class="form-control" id="nombre" placeholder="Nombre">
+                            </div>
+                            <div class="form-group">
+                              <label for="edad">Grupo</label>
+                              <input type="text" class="form-control" id="edad" placeholder="Edad">
+                            </div>
+                                   
+                      </div>
+                    </div>
                   </div>
                 <div class="tab-pane" id="tab3">
-                  3
+                  <p>
+                    <div class="panel panel-default">
+                      <!-- Default panel contents -->
+                      <div class="panel-heading"></div>
+                      <div class="panel-body">
+                          <div class="page-header">
+                            <h1>Crear Expediente y Activarlo <small>Datos generales</small></h1>
+                          </div>
+                          
+                            <p>
+                              <button type="button" class="btn btn-primary btn-lg">Crear y Activar</button>
+                              <button type="button" class="btn btn-default btn-lg">Cancelar</button>
+                            </p>
+                                   
+                      </div>
+                    </div>
                   </div>
-                <div class="tab-pane" id="tab4">
-                  4
-                  </div>
-                <div class="tab-pane" id="tab5">
-                  5
-                  </div>
-                <div class="tab-pane" id="tab6">
-                  6
-                  </div>
-                <div class="tab-pane" id="tab7">
-                  7
-                  </div>
+
                 <ul class="pager wizard">
-                  <li class="previous first" style="display:none;"><a href="#">First</a></li>
-                  <li class="previous"><a href="#">Previous</a></li>
-                  <li class="next last" style="display:none;"><a href="#">Last</a></li>
-                    <li class="next"><a href="#">Next</a></li>
+                  <li class="previous first" style="display:none;"><a href="#">Inicio</a></li>
+                  <li class="previous"><a href="#">Previo</a></li>
+                  <li class="next last" style="display:none;"><a href="#">Terminar</a></li>
+                    <li class="next"><a href="#">Siguiente</a></li>
                 </ul>
               </div>  
             </div>
-                      
+        </form>
+
         </div>
       </div>
     </div>

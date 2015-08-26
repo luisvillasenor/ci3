@@ -2,10 +2,10 @@
       <div class="">
                
           <div class="jumbotron">
-            <h1>Psicometria</h1>
-            <p>Que obtienes?</p>
+            <h1>Que hace ésta App por usted?</h1>
+            <p>Beneficios</p>
             <p>
-              <a class="btn btn-primary btn-large" href="gestalt">Iniciar</a>
+              <a class="btn btn-primary btn-large" href="gestalt">Crear nuevo expediente</a>
             </p>
           </div>
         

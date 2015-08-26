@@ -13,8 +13,10 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#rootwizard').bootstrapWizard();
+    $('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
 });
+
+
 
 </script>			
 

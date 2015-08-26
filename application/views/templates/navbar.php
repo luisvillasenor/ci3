@@ -16,11 +16,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<?php echo base_url();?>">Mi Perfil</a></li>
                 <li><a href="<?php echo base_url();?>">Mi Membresia</a></li>
-                
                 <li role="separator" class="divider"></li>
-                <li><a href="<?php echo base_url();?>">Mis Pacientes</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="<?php echo base_url();?>">Mis Psicometrias</a></li>
               </ul>
             </li>
             <li><a href="<?php echo base_url();?>">Cerrar Sesión</a></li>
