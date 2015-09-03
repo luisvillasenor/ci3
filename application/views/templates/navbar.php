@@ -15,7 +15,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PsicólogoYo <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="<?php echo base_url();?>">Mi Perfil</a></li>
-                <li><a href="<?php echo base_url();?>">Mi Membresia</a></li>
+                <li><a href="<?php echo base_url();?>expedientes">Mis Expedientes</a></li>
                 <li role="separator" class="divider"></li>
               </ul>
             </li>

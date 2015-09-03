@@ -5,7 +5,7 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Crear Expediente <span class="sr-only">(current)</span></a></li>
             
-            <li><a href="mispacientes">Mis Pacientes</a></li>
+            <li><a href="<?php echo base_url(); ?>mispacientes">Mis Pacientes</a></li>
             
           </ul>
         </div>

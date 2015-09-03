@@ -3,7 +3,7 @@
         
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="mispacientes">Mis Pacientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url(); ?>mispacientes">Mis Pacientes <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Resultados</a></li>
             <li><a href="#">Estadísticas</a></li>
           </ul>
