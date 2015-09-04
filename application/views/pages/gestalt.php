@@ -32,22 +32,22 @@
                           </div>
                           
                             <div class="form-group">
-                              <label for="nombre">Nombre completo</label>
-                              <input type="email" class="form-control" id="nombre" placeholder="Nombre">
+                              <label for="nombre_completo">Nombre completo</label>
+                              <input type="text" class="form-control" name="nombre_completo" id="nomnombre_completobre" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                               <label for="edad">Edad</label>
-                              <input type="text" class="form-control" id="edad" placeholder="Edad">
+                              <input type="text" class="form-control" name="edad" id="edad" placeholder="Edad">
                             </div>
                             
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox"> Masculino
+                                <input name="sexo" id="sexo" type="checkbox"> Masculino
                               </label>
                             </div>
                             <div class="checkbox">
                               <label>
-                                <input type="checkbox"> Femenino
+                                <input name="sexo" id="sexo" type="checkbox"> Femenino
                               </label>
                             </div>                          
                       </div>
@@ -64,12 +64,12 @@
                           </div>
                           
                             <div class="form-group">
-                              <label for="nombre">Aplicador</label>
-                              <input type="email" class="form-control" id="nombre" placeholder="Nombre">
+                              <label for="aplicador">Aplicador</label>
+                              <input type="text" class="form-control" name="aplicador" id="Aplicador" placeholder="Aplicador">
                             </div>
                             <div class="form-group">
-                              <label for="edad">Grupo</label>
-                              <input type="text" class="form-control" id="edad" placeholder="Edad">
+                              <label for="grupo">Grupo</label>
+                              <input type="text" class="form-control" name="grupo" id="grupo" placeholder="Grupo">
                             </div>
                                    
                       </div>
@@ -94,12 +94,7 @@
                     </div>
                   </div>
 
-                <ul class="pager wizard">
-                  <li class="previous first" style="display:none;"><a href="#">Inicio</a></li>
-                  <li class="previous"><a href="#">Previo</a></li>
-                  <li class="next last" style="display:none;"><a href="#">Terminar</a></li>
-                    <li class="next"><a href="#">Siguiente</a></li>
-                </ul>
+
               </div>  
             </div>
         </form>
