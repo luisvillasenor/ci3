@@ -5,6 +5,7 @@ class Expedientes extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('Expedientes_model');
+                $this->load->model('Pacientes_model');
                 $this->load->helper('url_helper');
         }
 
@@ -42,24 +43,29 @@ class Expedientes extends CI_Controller {
 
             $data['title'] = 'Create a expedientes item';
 
-            $this->form_validation->set_rules('title', 'Title', 'required');
-            $this->form_validation->set_rules('text', 'text', 'required');
-            $this->form_validation->set_rules('text', 'text', 'required');
-            $this->form_validation->set_rules('text', 'text', 'required');
-            $this->form_validation->set_rules('text', 'text', 'required');
+            $this->form_validation->set_rules('nombre_completo', 'nombre_completo', 'required');
+            $this->form_validation->set_rules('edad', 'edad', 'required');
+            $this->form_validation->set_rules('sexo', 'sexo', 'required');
+            $this->form_validation->set_rules('aplicador', 'aplicador', 'required');
+            $this->form_validation->set_rules('grupo', 'grupo', 'required');
                                     
             if ($this->form_validation->run() === FALSE)
             {
-                $this->load->view('templates/header', $data);
-                $this->load->view('templates/navbar');
-                $this->load->view('expedientes/create');
-                $this->load->view('templates/footer');
+                //$this->load->view('templates/header', $data);
+                //$this->load->view('templates/navbar');
+                //$this->load->view('expedientes/create');
+                //$this->load->view('templates/footer');
+                redirect('gestalt');
 
             }
-            else
-            {
-                $this->Expedientes_model->set_news();
-                $this->load->view('expedientes/success');
+            else {
+                
+                $id_paciente = $this->Pacientes_model->set_pacientes();
+                $miembro = 'psicologo01';
+                $aplicador = $this->input->post('aplicador');
+                $status = '1';
+                $id_expediente = $this->Expedientes_model->set_expedientes($id_paciente,$miembro,$aplicador,$status);
+                redirect('mispacientes');
             }
         }
 

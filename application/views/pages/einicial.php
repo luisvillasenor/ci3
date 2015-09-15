@@ -1,17 +1,14 @@
     <div class="container-fluid">
-      <div class="row">
-        
+      <div class="row">        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="mispacientes">Mis Pacientes <span class="sr-only">(current)</span></a></li>
-
           </ul>
         </div>
 
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <ol class="breadcrumb">
-          <li><a href="einicial">Paciente X</a></li>
+          <li><a href="einicial">Paciente <?php echo $id_paciente; ?></a></li>
           <li class="active">Evaluacion Inicial</li>
         </ol>
         
@@ -36,12 +33,22 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <br>
+
+    <form method="post" action="<?php echo base_url('psic_test1/create');?>">
     <div role="tabpanel" class="tab-pane active" id="home">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Test 1 <strong>AUTOESTIMA</strong></h3>
+            <nav class="navbar">
+              <div class="container"> 
+                <input type="hidden" name="id_paciente" id="id_paciente" value="<?php echo $id_paciente; ?>">
+                <input type="hidden" name="status_test1" id="status_test1" value="1">
+                <input class="btn btn-success navbar-btn" type="submit" value="Guardar">
+                <button type="button" class="btn btn-default navbar-btn">Ver Valores</button>
+                <button type="button" class="btn btn-default navbar-btn">Ver Resultados</button>
+              </div>
+            </nav>
           </div>
-          <div class="panel-body">
+            <div class="panel-body">
             <strong>Instrucciones</strong>:
             <p>Señala la opción que este más acorde a tu sentir.</p>
             <hr>
@@ -49,54 +56,29 @@
               <tr>
                 <th></th>
                 <th>Pregunta</th>
-                <th colspan="4">Respuesta</th>
-                
+                <th colspan="4">Respuesta</th>                
               </tr>
-              <tr>
-                <td>1</td>
-                <td>Siento que las personas que conozco  son mejor que yo</td>
-                <td>
-                  <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Siempre
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Casi siempre
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Casi nunca
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Nunca
-                    </label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Me culpo, incluso cuando no soy el que tengo la culpa</td>
-                <td>
-                  <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Siempre
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Casi siempre
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Casi nunca
-                    </label>
-                    <label class="btn btn-default">
-                      <input type="radio" autocomplete="off"> Nunca
-                    </label>
-                  </div>
-                </td>
-              </tr>
+              <?php foreach ($get_preg_test1 as $get_preg_test1_item) : ?>
+                  <tr>
+                    <td><?php echo $get_preg_test1_item['id'];?></td>
+                    <td><?php echo $get_preg_test1_item['pregunta'];?></td>
+                    <?php foreach ($get_resp_test1 as $get_resp_test1_item) : ?>
+                      <td>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default">
+                          <input type="radio" autocomplete="off" name="resp_test1_<?php echo $get_preg_test1_item['id'];?>" id="resp_test1" value="<?php echo $get_resp_test1_item['valor'];?>" required><?php echo $get_resp_test1_item['nombre'];?>
+                        </label>
+                      </div>
+                      </td>                    
+                    <?php endforeach; ?>                    
+                  </tr>
+              <?php endforeach; ?>
             </table>
-
-          </div>
+            </div>
         </div>
     </div>
+    </form>
+
     <div role="tabpanel" class="tab-pane" id="profile">...</div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
     <div role="tabpanel" class="tab-pane" id="settings">...</div>

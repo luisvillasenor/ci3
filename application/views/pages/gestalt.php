@@ -5,7 +5,7 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Crear Expediente <span class="sr-only">(current)</span></a></li>
             
-            <li><a href="<?php echo base_url(); ?>mispacientes">Mis Pacientes</a></li>
+            <li><a href="<?php echo base_url(); ?>mispacientes">Mis Expedientes</a></li>
             
           </ul>
         </div>
@@ -13,7 +13,7 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-        <form>
+        <form method="post" action="<?php echo base_url('expedientes/create');?>">
           <div id="rootwizard">
               <ul>
                 <li><a href="#tab1" data-toggle="tab"><span class="label">1</span> Datos del Paciente</a></li>
@@ -33,21 +33,21 @@
                           
                             <div class="form-group">
                               <label for="nombre_completo">Nombre completo</label>
-                              <input type="text" class="form-control" name="nombre_completo" id="nomnombre_completobre" placeholder="Nombre">
+                              <input type="text" class="form-control" name="nombre_completo" id="nombre_completo" placeholder="Nombre">
                             </div>
                             <div class="form-group">
                               <label for="edad">Edad</label>
                               <input type="text" class="form-control" name="edad" id="edad" placeholder="Edad">
                             </div>
                             
-                            <div class="checkbox">
+                            <div class="radio">
                               <label>
-                                <input name="sexo" id="sexo" type="checkbox"> Masculino
+                                <input name="sexo" id="sexo" type="radio" value="m"> Masculino
                               </label>
-                            </div>
-                            <div class="checkbox">
+                            
+                            
                               <label>
-                                <input name="sexo" id="sexo" type="checkbox"> Femenino
+                                <input name="sexo" id="sexo" type="radio" value="f"> Femenino
                               </label>
                             </div>                          
                       </div>
@@ -86,8 +86,8 @@
                           </div>
                           
                             <p>
-                              <button type="button" class="btn btn-primary btn-lg">Crear y Activar</button>
-                              <button type="button" class="btn btn-default btn-lg">Cancelar</button>
+                              <button type="submit" class="btn btn-primary btn-lg">Crear y Activar</button>
+                              <button type="reset" class="btn btn-default btn-lg">Cancelar</button>
                             </p>
                                    
                       </div>

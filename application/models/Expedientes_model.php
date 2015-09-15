@@ -3,41 +3,53 @@ class Expedientes_model extends CI_Model {
 
         public function __construct()
         {
-                $this->load->database();
+            $this->load->database();
+            define("TABLA", "expedientes");
         }
 
         /**
         * 
         */
-        public function get_expedientes($nombre_exp = FALSE)
+        public function get_expedientes($id_expediente = FALSE)
 		{
-	        if ($nombre_exp === FALSE)
+	        if ($id_expediente === FALSE)
 	        {
-                $query = $this->db->get('expedientes');
+                $query = $this->db->get(TABLA);
                 return $query->result_array();
 	        }
 
-	        $query = $this->db->get_where('expedientes', array('nombre_exp' => $nombre_exp));
+	        $query = $this->db->get_where(TABLA, array('id_expediente' => $id_expediente));
 	        return $query->row_array();
 		}
 
 		/**
         * 
         */
-		public function set_news()
+		public function set_expedientes($id_paciente,$miembro,$aplicador,$status_exp)
 		{
 		    $this->load->helper('url');
-
-		    $nombre_exp = url_title($this->input->post('title'), 'dash', TRUE);
-
 		    $data = array(
-		        'title' => $this->input->post('title'),
-		        'nombre_exp' => $nombre_exp,
-		        'text' => $this->input->post('text')
+		        'miembro' => $miembro,
+		        'id_paciente' => $id_paciente,
+		        'aplicador' => $aplicador,		        
+		        'fecha' => date('Y-m-d H:i:s'),
+		        'fecha_ult_acc' => date('Y-m-d H:i:s')
 		    );
-
-		    return $this->db->insert('news', $data);
+		    $this->db->insert(TABLA, $data);
+		    $id_expediente = $this->db->insert_id();
+   			return  $id_expediente;
 		}
 
+		public function update_status_test1($id_paciente,$suma_status_test1)
+		{
+		    $this->load->helper('url');
+		    $data = array(
+		        'id_paciente' => $id_paciente,
+		        'fecha_ult_acc' => date('Y-m-d H:i:s'),
+		        'status_test1' => $suma_status_test1
+		    );
+		    $this->db->where('id_paciente', $id_paciente);
+        	$query = $this->db->update(TABLA, $data);
+		}
 
 }
