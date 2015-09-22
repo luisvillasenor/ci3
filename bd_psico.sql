@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-09-2015 a las 22:51:00
+-- Tiempo de generación: 21-09-2015 a las 22:32:24
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -27,25 +27,30 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `expedientes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `numero_exp` varchar(100) NOT NULL,
-  `nombre_exp` varchar(254) NOT NULL,
+  `id_expediente` int(11) NOT NULL AUTO_INCREMENT,
   `miembro` varchar(100) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `aplicador` varchar(254) NOT NULL,
   `fecha_alta` datetime NOT NULL,
   `fecha_ult_acc` datetime NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `status_exp` decimal(2,2) NOT NULL,
+  `status_test1` decimal(2,2) NOT NULL DEFAULT '0.00',
+  `status_test2` int(1) NOT NULL DEFAULT '0',
+  `status_test3` int(1) NOT NULL DEFAULT '0',
+  `status_test4` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_expediente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `expedientes`
 --
 
-INSERT INTO `expedientes` (`id`, `numero_exp`, `nombre_exp`, `miembro`, `id_paciente`, `aplicador`, `fecha_alta`, `fecha_ult_acc`, `status`) VALUES
-(1, '1001', 'Exp de Test', 'Psicologo01', 1, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-03 00:00:00', 1),
-(2, '1002', 'Exp2 de Test', 'Psicologo01', 2, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-03 00:00:00', 1);
+INSERT INTO `expedientes` (`id_expediente`, `miembro`, `id_paciente`, `aplicador`, `fecha_alta`, `fecha_ult_acc`, `status_exp`, `status_test1`, `status_test2`, `status_test3`, `status_test4`) VALUES
+(1, 'psicologo01', 1, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-14 23:01:03', 0.00, 0.00, 0, 0, 0),
+(2, 'psicologo01', 2, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-14 23:03:02', 0.00, 0.00, 0, 0, 0),
+(3, 'psicologo01', 3, 'Instituto de Psicologia', '0000-00-00 00:00:00', '2015-09-14 23:03:39', 0.00, 0.00, 0, 0, 0),
+(4, 'psicologo01', 4, 'Instituto de Psicologia Ags', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0.00, 0.00, 0, 0, 0),
+(5, 'psicologo01', 8, 'SECTURE', '2015-09-21 20:58:18', '2015-09-21 20:58:18', 0.00, 0.00, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -60,16 +65,21 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `sexo` varchar(1) NOT NULL,
   `grupo` varchar(254) NOT NULL,
   PRIMARY KEY (`id_paciente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
 INSERT INTO `pacientes` (`id_paciente`, `nombre_completo`, `edad`, `sexo`, `grupo`) VALUES
-(1, 'Luis Villasenor', 0, '', ''),
-(2, 'Gabriel Alarcon', 0, '', ''),
-(3, 'Valeria Guzman', 0, '', '');
+(1, 'Luis Villasenor', 38, 'h', 'Grupo A'),
+(2, 'Gabriel Alarcon', 28, 'h', 'Grupo A'),
+(3, 'Valeria Guzman', 35, 'm', 'Grupo A'),
+(4, 'Luis Gabriel Villasenor Alarcon', 41, 'h', 'Grupo A'),
+(5, 'Valeria Guzman Marquez', 34, 'm', 'Grupo A'),
+(6, 'Luis Gabriel Villasenor Alarcon', 41, 'm', 'Grupo B'),
+(7, 'Luis Gabriel Villasenor Alarcon', 41, 'm', 'Grupo B'),
+(8, 'Luis Gabriel Villasenor Alarcon', 41, 'm', 'Grupo B');
 
 -- --------------------------------------------------------
 
@@ -107,12 +117,30 @@ INSERT INTO `preg_test1` (`id`, `pregunta`) VALUES
 
 CREATE TABLE IF NOT EXISTS `psic_test1` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_preg_test1` int(2) NOT NULL,
-  `resp` int(1) NOT NULL,
-  `evaluacion` varchar(50) NOT NULL,
-  `id_paciente` int(11) NOT NULL,
+  `resp_test1_1` int(1) NOT NULL,
+  `resp_test1_2` int(1) NOT NULL,
+  `resp_test1_3` int(1) NOT NULL,
+  `resp_test1_4` int(1) NOT NULL,
+  `resp_test1_5` int(1) NOT NULL,
+  `resp_test1_6` int(1) NOT NULL,
+  `resp_test1_7` int(1) NOT NULL,
+  `resp_test1_8` int(1) NOT NULL,
+  `resp_test1_9` int(1) NOT NULL,
+  `resp_test1_10` int(1) NOT NULL,
+  `resp_test1_11` int(1) NOT NULL,
+  `calificacion` int(2) NOT NULL,
+  `avance` float(3,2) NOT NULL,
+  `id_expediente` int(11) NOT NULL,
+  `status_test1` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Psicometria del Test 1 Autoestima' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Psicometria del Test 1 Autoestima' AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `psic_test1`
+--
+
+INSERT INTO `psic_test1` (`id`, `resp_test1_1`, `resp_test1_2`, `resp_test1_3`, `resp_test1_4`, `resp_test1_5`, `resp_test1_6`, `resp_test1_7`, `resp_test1_8`, `resp_test1_9`, `resp_test1_10`, `resp_test1_11`, `calificacion`, `avance`, `id_expediente`, `status_test1`) VALUES
+(1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 35, 0.80, 1, 1);
 
 -- --------------------------------------------------------
 
