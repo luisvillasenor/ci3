@@ -2,14 +2,14 @@
       <div class="row">        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo base_url('expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url('index.php/expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <ol class="breadcrumb">
-          <li><a href="<?php echo base_url('einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
-          <li class="active"><?php echo $title;?> [ <?php echo $status_test1;?> ]</li>
+          <li><a href="<?php echo base_url('index.php/einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
+          <li class="active"><?php echo $title;?></li>
         </ol>
        
         
@@ -32,11 +32,6 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Autoestima</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">SALMA</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Ansiedad y Depresión</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Neurosis</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Informe Clinico</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Informe Familia</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -59,7 +54,7 @@
                 <div class="modal fade" id="myModal_<?php echo $id_expediente;?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                    <form class="form-inline" method="post" action="<?php echo base_url('psic_test1/create');?>">  
+                    <form class="form-inline" method="post" action="<?php echo base_url('index.php/psic_test1/create');?>">  
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">
@@ -204,11 +199,7 @@
 </div><!--home -->
 
 
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+
   </div><!-- tabs -->
 
 </div>

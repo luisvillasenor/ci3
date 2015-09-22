@@ -3,7 +3,7 @@
       <div class="row">        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo base_url('expedientes'); ?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url('index.php/expedientes'); ?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
@@ -15,11 +15,11 @@
                       <div class="panel-body">
                           <table class="table table-hover">
                             <thead>
-                              <caption>Mis Expedientes</caption>
+                              <caption></caption>
                               <tr>
-                                <th>Exp</th>
-                                <th>Paciente</th>
-                                <th>Status</th>
+                                <th>Expediente/Aplicador</th>
+                                <th>Paciente/GRupo</th>
+                                <th>Avance Global</th>
                                 <th colspan="4"></th>
                               </tr>
                             </thead>
@@ -48,23 +48,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                	<a type="button" class="btn btn-default" href="<?php echo base_url('expedientes/'.$expediente_item['id_expediente']); ?>">Datos del Expediente</a>
+                                	<a type="button" class="btn btn-default" href="<?php echo base_url('index.php/expedientes/'.$expediente_item['id_expediente']); ?>">Datos del Expediente</a>
                                 </td>
                                 <td>
-                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [<?php echo ($expediente_item['status_test1']*100); ?>%]</a>
+                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('index.php/einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [<?php echo ($expediente_item['status_test1']*100); ?>%]</a>
                                 </td>
-                                <td>
-                                  <form action="efinal" method="post">
-                                    <input type="hidden" name="id_paciente" id="id_paciente" value="<?php echo $expediente_item['id_paciente']; ?>">
-                                    <input class="btn btn-info" type="submit" value="Evaluacion Final">
-                                  </form>
-                                </td>
-                                <td>
-                                  <form action="psico" method="post">
-                                    <input type="hidden" name="id_paciente" id="id_paciente" value="<?php echo $expediente_item['id_paciente']; ?>">
-                                    <input class="btn btn-success" type="submit" value="Psocometria">
-                                  </form>
-                                </td>
+                                
 
                               </tr>
                             <?php endforeach; ?>  

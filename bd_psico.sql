@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-09-2015 a las 22:32:24
+-- Tiempo de generación: 22-09-2015 a las 12:45:24
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `bd_psico`
+-- Base de datos: `db202570_desarrollo`
 --
 
 -- --------------------------------------------------------
@@ -46,11 +46,11 @@ CREATE TABLE IF NOT EXISTS `expedientes` (
 --
 
 INSERT INTO `expedientes` (`id_expediente`, `miembro`, `id_paciente`, `aplicador`, `fecha_alta`, `fecha_ult_acc`, `status_exp`, `status_test1`, `status_test2`, `status_test3`, `status_test4`) VALUES
-(1, 'psicologo01', 1, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-14 23:01:03', 0.00, 0.00, 0, 0, 0),
-(2, 'psicologo01', 2, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-14 23:03:02', 0.00, 0.00, 0, 0, 0),
-(3, 'psicologo01', 3, 'Instituto de Psicologia', '0000-00-00 00:00:00', '2015-09-14 23:03:39', 0.00, 0.00, 0, 0, 0),
-(4, 'psicologo01', 4, 'Instituto de Psicologia Ags', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0.00, 0.00, 0, 0, 0),
-(5, 'psicologo01', 8, 'SECTURE', '2015-09-21 20:58:18', '2015-09-21 20:58:18', 0.00, 0.00, 0, 0, 0);
+(1, 'psicologo01', 1, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-22 12:05:08', 0.80, 0.80, 0, 0, 0),
+(2, 'psicologo01', 2, 'Instituto X de Psiquiatria', '2015-09-03 00:00:00', '2015-09-22 11:38:34', 0.73, 0.73, 0, 0, 0),
+(3, 'psicologo01', 3, 'Instituto de Psicologia', '0000-00-00 00:00:00', '2015-09-22 12:24:02', 0.32, 0.32, 0, 0, 0),
+(4, 'psicologo01', 4, 'Instituto de Psicologia Ags', '0000-00-00 00:00:00', '2015-09-22 11:55:06', 0.00, 0.00, 0, 0, 0),
+(5, 'psicologo01', 8, 'SECTURE', '2015-09-21 20:58:18', '2015-09-22 11:50:07', 0.00, 0.00, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -133,14 +133,16 @@ CREATE TABLE IF NOT EXISTS `psic_test1` (
   `id_expediente` int(11) NOT NULL,
   `status_test1` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Psicometria del Test 1 Autoestima' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Psicometria del Test 1 Autoestima' AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `psic_test1`
 --
 
 INSERT INTO `psic_test1` (`id`, `resp_test1_1`, `resp_test1_2`, `resp_test1_3`, `resp_test1_4`, `resp_test1_5`, `resp_test1_6`, `resp_test1_7`, `resp_test1_8`, `resp_test1_9`, `resp_test1_10`, `resp_test1_11`, `calificacion`, `avance`, `id_expediente`, `status_test1`) VALUES
-(1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 35, 0.80, 1, 1);
+(1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 35, 0.80, 1, 1),
+(2, 2, 4, 3, 2, 3, 2, 4, 3, 2, 4, 3, 32, 0.73, 2, 1),
+(3, 0, 2, 4, 3, 0, 3, 0, 2, 0, 0, 0, 14, 0.32, 3, 1);
 
 -- --------------------------------------------------------
 
