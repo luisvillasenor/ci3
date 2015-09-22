@@ -8,7 +8,7 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <ol class="breadcrumb">
-          <li><a href="einicial/<?php echo $id_paciente; ?>">Paciente <?php echo $id_paciente; ?></a></li>
+          <li><a href="einicial">Paciente <?php echo $id_paciente; ?></a></li>
           <li class="active">Evaluacion Inicial</li>
         </ol>
         
@@ -34,7 +34,7 @@
   <div class="tab-content">
     <br>
 
-    <form class="form-inline" method="post" action="<?php echo base_url('psic_test1/create');?>">
+
     <div role="tabpanel" class="tab-pane active" id="home">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -74,7 +74,7 @@
                       <div class="form-group" data-toggle="buttons">
                     <?php foreach ($get_resp_test1 as $get_resp_test1_item) : ?>
                         <label class="btn btn-default radio-inline">
-                          <input type="radio" autocomplete="off" name="resp_test1_<?php echo $get_preg_test1_item['id'];?>" id="resp_test1" value="<?php echo $get_resp_test1_item['valor'];?>" required><?php echo $get_resp_test1_item['nombre'];?>
+                          <input type="radio" autocomplete="off" name="resp_test1_<?php echo $get_preg_test1_item['id'];?>" id="resp_test1"  required><?php echo $get_resp_test1_item['valor'];?>
                         </label>
                     <?php endforeach; ?>
                       </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    </form>
+
 
     <div role="tabpanel" class="tab-pane" id="profile">...</div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>

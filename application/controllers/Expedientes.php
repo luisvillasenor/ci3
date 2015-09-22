@@ -6,13 +6,15 @@ class Expedientes extends CI_Controller {
                 parent::__construct();
                 $this->load->model('Expedientes_model');
                 $this->load->model('Pacientes_model');
+                $this->load->model('Psic_test1_model');
                 $this->load->helper('url_helper');
         }
 
         public function index()
         {
                 $data['expedientes'] = $this->Expedientes_model->get_expedientes();
-                $data['title'] = 'Expedientes Psicometricos';
+                $data['pacientes'] = $this->Pacientes_model->get_pacientes();
+                $data['title'] = 'Mis Expedientes Psicometricos';
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
@@ -20,15 +22,16 @@ class Expedientes extends CI_Controller {
                 $this->load->view('templates/footer');
         }
 
-        public function view($nombre_exp = NULL)
+        public function view($id_expediente = NULL)
         {
-                $data['expediente_item'] = $this->Expedientes_model->get_expedientes($nombre_exp);
+                $data['expediente_item'] = $this->Expedientes_model->get_expedientes($id_expediente);
+                
                 if (empty($data['expediente_item']))
                 {
                         show_404();
                 }
 
-                $data['title'] = $data['expediente_item']['title'];
+                $data['title'] = $data['expediente_item']['id_expediente'];
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');
@@ -63,9 +66,9 @@ class Expedientes extends CI_Controller {
                 $id_paciente = $this->Pacientes_model->set_pacientes();
                 $miembro = 'psicologo01';
                 $aplicador = $this->input->post('aplicador');
-                $status = '1';
-                $id_expediente = $this->Expedientes_model->set_expedientes($id_paciente,$miembro,$aplicador,$status);
-                redirect('mispacientes');
+                
+                $id_expediente = $this->Expedientes_model->set_expedientes($id_paciente,$miembro,$aplicador);
+                redirect('expedientes/'.$id_expediente);
             }
         }
 

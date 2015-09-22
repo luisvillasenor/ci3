@@ -25,14 +25,14 @@ class Expedientes_model extends CI_Model {
 		/**
         * 
         */
-		public function set_expedientes($id_paciente,$miembro,$aplicador,$status_exp)
+		public function set_expedientes($id_paciente,$miembro,$aplicador)
 		{
 		    $this->load->helper('url');
 		    $data = array(
 		        'miembro' => $miembro,
 		        'id_paciente' => $id_paciente,
 		        'aplicador' => $aplicador,		        
-		        'fecha' => date('Y-m-d H:i:s'),
+		        'fecha_alta' => date('Y-m-d H:i:s'),
 		        'fecha_ult_acc' => date('Y-m-d H:i:s')
 		    );
 		    $this->db->insert(TABLA, $data);

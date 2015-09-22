@@ -9,15 +9,15 @@ class Pacientes_model extends CI_Model {
         /**
         * 
         */
-        public function get_pacientes($nombre_exp = FALSE)
+        public function get_pacientes($id_paciente = FALSE)
 		{
-	        if ($nombre_exp === FALSE)
+	        if ($id_paciente === FALSE)
 	        {
                 $query = $this->db->get('pacientes');
                 return $query->result_array();
 	        }
 
-	        $query = $this->db->get_where('pacientes', array('nombre_exp' => $nombre_exp));
+	        $query = $this->db->get_where('pacientes', array('id_paciente' => $id_paciente));
 	        return $query->row_array();
 		}
 

@@ -20,17 +20,23 @@ class Psic_test1 extends CI_Controller {
                 $this->load->view('templates/footer');
         }
 
-        public function view($nombre_exp = NULL)
+        public function view()
         {
-                $data['expediente_item'] = $this->Expedientes_model->get_expedientes($nombre_exp);
-                if (empty($data['expediente_item'])) {
+                /*$data['psico_test1_item'] = $this->Psico_test1_model->get_psico_test1($id_paciente);
+                if (empty($data['psico_test1_item'])) {
                         show_404();
-                }
-                $data['title'] = $data['expediente_item']['title'];
-                $this->load->view('templates/header', $data);
-                $this->load->view('templates/navbar');
-                $this->load->view('expedientes/view', $data);
-                $this->load->view('templates/footer');
+                }*/
+
+                $psic_test1_item = $this->Psic_test1_model->get_psic_test1();
+                //print_r($psic_test1_item);
+                $json = json_encode($psic_test1_item);
+                echo $json;
+
+                //$this->load->view('templates/header', $data);
+                //$this->load->view('templates/navbar');
+                //$this->load->view('psico_test1/view', $data);
+                //$this->load->view('templates/footer');
+
         }
 
         public function create()
@@ -38,39 +44,60 @@ class Psic_test1 extends CI_Controller {
             $this->load->helper('form');
             $this->load->model('Psic_test1_model');
             $this->load->model('Expedientes_model');
-            $id_paciente   = $this->input->post('id_paciente');
-            $status_test1  = $this->input->post('status_test1');
 
-            foreach ($_REQUEST as $key => $value) {
-                if ( (substr($key, 0, 11) == 'resp_test1_') ) {
-                    $id_preg_test1 = $key;
-                    $id_preg_test1 = substr($key, 11);
-                    $resp_test1 = $value;                    
-                    $this->Psic_test1_model->set_psic_test1($id_preg_test1,$resp_test1,$id_paciente,$status_test1);
-                }
-            }
+            $resp_test1['id_expediente'] = $this->input->post('id_expediente');
+            $resp_test1['status_test1'] = $this->input->post('status_test1');
+            $resp_test1['resp_test1_1'] = $this->input->post('resp_test1_1');
+            $resp_test1['resp_test1_2'] = $this->input->post('resp_test1_2');
+            $resp_test1['resp_test1_3'] = $this->input->post('resp_test1_3');
+            $resp_test1['resp_test1_4'] = $this->input->post('resp_test1_4');
+            $resp_test1['resp_test1_5'] = $this->input->post('resp_test1_5');
+            $resp_test1['resp_test1_6'] = $this->input->post('resp_test1_6');
+            $resp_test1['resp_test1_7'] = $this->input->post('resp_test1_7');
+            $resp_test1['resp_test1_8'] = $this->input->post('resp_test1_8');
+            $resp_test1['resp_test1_9'] = $this->input->post('resp_test1_9');
+            $resp_test1['resp_test1_10'] = $this->input->post('resp_test1_10');
+            $resp_test1['resp_test1_11'] = $this->input->post('resp_test1_11');
 
-            $query = $this->Psic_test1_model->calcular_status($id_paciente);
-            foreach ($query as $key => $value) {
-                if ($key == 'suma') {
-                    $suma_status_test1 = $value;
-                }              
-            }
-            
-            $this->Expedientes_model->update_status_test1($id_paciente,$suma_status_test1);
+            $insert_id = $this->Psic_test1_model->set_psic_test1($resp_test1);
+            // Calcula la calificacion y actualiza el campo calificacion
+            $calificacion = $this->calificacion($insert_id);
+            // Calcula el porcentaje de la calificacion base 44 total
+            $avance = $this->avance($insert_id,$calificacion);
 
-            redirect('mispacientes');
+            $id_expediente = $this->input->post('id_expediente');
+
+            redirect('expedientes/'.$id_expediente);
         }
 
-        public function avance($id_paciente)
-        {
+        public function calificacion($insert_id){
             $this->load->model('Psic_test1_model');
-            
-            $id_paciente   = $this->input->post('id_paciente');
-            
-
-            redirect('mispacientes');
+            $res = $this->Psic_test1_model->calificacion($insert_id);
+            foreach ($res as $key => $value) {
+                if ($key == 'calificacion') {
+                    $calificacion = $value;
+                }                
+            }
+            //echo $res;
+            $this->Psic_test1_model->update_calificacion($calificacion,$insert_id);
+            return $calificacion;
         }
+
+
+        public function avance($insert_id,$calificacion){
+            $this->load->model('Psic_test1_model');
+            $val_max = 44;
+            $res = $this->Psic_test1_model->avance($insert_id,$val_max,$calificacion);
+            foreach ($res as $key => $value) {
+                if ($key == 'avance') {
+                    $avance = $value;
+                }                
+            }
+            //echo $res;
+            $this->Psic_test1_model->update_avance($avance,$insert_id);
+            return $avance;
+        }
+
 
 
 }
