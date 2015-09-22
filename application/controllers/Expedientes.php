@@ -25,13 +25,22 @@ class Expedientes extends CI_Controller {
         public function view($id_expediente = NULL)
         {
                 $data['expediente_item'] = $this->Expedientes_model->get_expedientes($id_expediente);
-                
                 if (empty($data['expediente_item']))
                 {
                         show_404();
+                }else{
+                    $data['title'] = $data['expediente_item']['id_expediente'];
+                    $av_test1 = $this->Psic_test1_model->get_avance_test1($id_expediente);
+                    if (isset($av_test1)) {
+                        foreach ($av_test1 as $key => $value) {
+                            if ($key == 'avance') {
+                                $avance_test1 = $value;
+                            }                
+                        }
+                        $this->Expedientes_model->update_status_test1($id_expediente,$avance_test1);
+                        $data['expediente_item'] = $this->Expedientes_model->get_expedientes($id_expediente);
+                    }
                 }
-
-                $data['title'] = $data['expediente_item']['id_expediente'];
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('templates/navbar');

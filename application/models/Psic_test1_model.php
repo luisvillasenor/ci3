@@ -39,6 +39,18 @@ class Psic_test1_model extends CI_Model {
             return $result;
         }
 
+        public function get_avance_test1($id_expediente)
+        {
+            $this->db->select('avance');
+            $this->db->where('id_expediente',$id_expediente);
+            $this->db->limit(1);
+            $query = $this->db->get('psic_test1');
+            if ( empty($query) ) {                
+                return $result = NULL;
+            }
+            return $query->row_array();
+        }
+
 		/**
         * 
         */

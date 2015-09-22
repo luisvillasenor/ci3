@@ -44,7 +44,7 @@ class Psic_test1 extends CI_Controller {
             $this->load->helper('form');
             $this->load->model('Psic_test1_model');
             $this->load->model('Expedientes_model');
-
+            // Se reciven los resultados del Test1 via POST.
             $resp_test1['id_expediente'] = $this->input->post('id_expediente');
             $resp_test1['status_test1'] = $this->input->post('status_test1');
             $resp_test1['resp_test1_1'] = $this->input->post('resp_test1_1');
@@ -58,15 +58,18 @@ class Psic_test1 extends CI_Controller {
             $resp_test1['resp_test1_9'] = $this->input->post('resp_test1_9');
             $resp_test1['resp_test1_10'] = $this->input->post('resp_test1_10');
             $resp_test1['resp_test1_11'] = $this->input->post('resp_test1_11');
-
+            // Agrego respuestas del Test1 a la BD.
             $insert_id = $this->Psic_test1_model->set_psic_test1($resp_test1);
             // Calcula la calificacion y actualiza el campo calificacion
             $calificacion = $this->calificacion($insert_id);
             // Calcula el porcentaje de la calificacion base 44 total
-            $avance = $this->avance($insert_id,$calificacion);
-
+            $avance_test1 = $this->avance($insert_id,$calificacion);
+            // Numero de Expediente en cuestion.
             $id_expediente = $this->input->post('id_expediente');
+            // Actualizo el status_test1 del Expediente en cuestion con el dato de avance_test1 anterior
+            $this->Expedientes_model->update_status_test1($id_expediente,$avance_test1);
 
+            // Redirecciona a la pagina del Expediente en cuestion.
             redirect('expedientes/'.$id_expediente);
         }
 

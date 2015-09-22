@@ -43,7 +43,20 @@ class Einicial extends CI_Controller {
                     $data['pacientes'] = $this->Pacientes_model->get_pacientes($id_paciente);
                     $data['nombre_completo'] = $data['pacientes']['nombre_completo'];
 
-                    $data['get_test1'] = '';
+                    $data['get_test1'] = array(
+                        'resp_test1_1' => '',
+                        'resp_test1_2' => '',
+                        'resp_test1_3' => '',
+                        'resp_test1_4' => '',
+                        'resp_test1_5' => '',
+                        'resp_test1_6' => '',
+                        'resp_test1_7' => '',
+                        'resp_test1_8' => '',
+                        'resp_test1_9' => '',
+                        'resp_test1_10' => '',
+                        'resp_test1_10' => ''
+                    );
+
                     $data['calificacion'] = '0';
                     $data['avance'] = '0';
 
@@ -83,12 +96,7 @@ class Einicial extends CI_Controller {
                                     
             if ($this->form_validation->run() === FALSE)
             {
-                //$this->load->view('templates/header', $data);
-                //$this->load->view('templates/navbar');
-                //$this->load->view('expedientes/create');
-                //$this->load->view('templates/footer');
                 redirect('gestalt');
-
             }
             else {
                 

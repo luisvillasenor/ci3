@@ -40,12 +40,18 @@
                                     }
                                 ?>
                                 </td>
-                                <td>%<?php echo $expediente_item['status_exp']; ?></td>
+                                <td>
+                                    <div class="progress">
+                                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo ($expediente_item['status_exp'])*100; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo ($expediente_item['status_exp'])*100; ?>%;">
+                                        <?php echo ($expediente_item['status_exp'])*100; ?> %
+                                      </div>              
+                                    </div>
+                                </td>
                                 <td>
                                 	<a type="button" class="btn btn-default" href="<?php echo base_url('expedientes/'.$expediente_item['id_expediente']); ?>">Datos del Expediente</a>
                                 </td>
                                 <td>
-                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [%<?php echo $expediente_item['status_test1']; ?>]</a>
+                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [<?php echo ($expediente_item['status_test1']*100); ?>%]</a>
                                 </td>
                                 <td>
                                   <form action="efinal" method="post">

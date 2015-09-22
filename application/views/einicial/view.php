@@ -9,7 +9,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <ol class="breadcrumb">
           <li><a href="<?php echo base_url('einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
-          <li class="active"><?php echo $title;?></li>
+          <li class="active"><?php echo $title;?> [ <?php echo $status_test1;?> ]</li>
         </ol>
        
         
@@ -46,15 +46,20 @@
 
     <div role="tabpanel" class="tab-pane active" id="home">
 
-
-                <!-- Boton Modal Crear Nuevo Test1 -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="myModal<?php echo $id_expediente;?>">
-                  Aplicar Nuevo Test1
-                </button>
+                <?php
+                      if (empty($status_test1)) { ?>
+                          <!-- Boton Modal Crear Nuevo Test1 -->
+                          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal_<?php echo $id_expediente;?>">
+                            Aplicar Nuevo Test1 <?php echo $status_test1;?>
+                          </button>
+                <?php }
+                 ?>
+             
                 <!-- Modal -->
-                <div class="modal fade" id="myModal<?php echo $id_expediente;?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal fade" id="myModal_<?php echo $id_expediente;?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
+                    <form class="form-inline" method="post" action="<?php echo base_url('psic_test1/create');?>">  
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">
@@ -67,7 +72,7 @@
                         </h4>
                       </div>
                       <div class="modal-body">
-                        <form class="form-inline" method="post" action="<?php echo base_url('psic_test1/create');?>">
+                        
                           <div class="panel panel-default">
                             <input type="hidden" name="id_expediente" id="id_expediente" value="<?php echo $id_expediente;?>">
                             <input type="hidden" name="status_test1" id="status_test1" value="1">
@@ -96,12 +101,13 @@
                                   </table>
                             </div>
                           </div>
-                        </form>
+                        
                       </div>
                       <div class="modal-footer">
                         <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                         <input type="submit" class="btn btn-success">
                       </div>
+                    </form>
                     </div>
                   </div>
                 </div>
@@ -182,9 +188,15 @@
               </tr>
               <tr>
                 <td><?php echo $calificacion;?> Ptos.</td>
-                <td><?php echo "%" . number_format(($avance*100),2);?></td>
+                <td><?php echo number_format(($avance*100),2) . "%" ;?></td>
               </tr>
             </table>
+            <hr>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avance*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avance*100),2);?>%;">
+                <?php echo number_format(($avance*100),2) . "%" ;?>
+              </div>              
+            </div>
             </div>
     </div><!-- rresultados -->
   </div>

@@ -9,13 +9,13 @@
     <script src="<?php echo base_url();?>/bootstrap-3.3.5-dist/js/jquery.bootstrap.wizard.js"></script>
 
 <script type="text/javascript">
-
 $(document).ready(function() {
     $('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
+
+
+
+
 });
-
-
-
 </script>			
 
 
