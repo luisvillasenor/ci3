@@ -3,7 +3,7 @@
       <div class="row">        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo base_url('index.php/expedientes'); ?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url('expedientes'); ?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
@@ -48,10 +48,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                	<a type="button" class="btn btn-default" href="<?php echo base_url('index.php/expedientes/'.$expediente_item['id_expediente']); ?>">Datos del Expediente</a>
+                                	<a type="button" class="btn btn-default" href="<?php echo base_url('expedientes/'.$expediente_item['id_expediente']); ?>">Datos del Expediente</a>
                                 </td>
                                 <td>
-                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('index.php/einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [<?php echo ($expediente_item['status_test1']*100); ?>%]</a>
+                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('einicial/'.$expediente_item['id_expediente']); ?>">Ev.Inicial [<?php echo ($expediente_item['status_test1']*100); ?>%]</a>
                                 </td>
                                 
 

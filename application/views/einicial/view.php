@@ -2,13 +2,13 @@
       <div class="row">        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo base_url('index.php/expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="<?php echo base_url('expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <ol class="breadcrumb">
-          <li><a href="<?php echo base_url('index.php/einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
+          <li><a href="<?php echo base_url('einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
           <li class="active"><?php echo $title;?></li>
         </ol>
        
@@ -54,7 +54,7 @@
                 <div class="modal fade" id="myModal_<?php echo $id_expediente;?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                    <form class="form-inline" method="post" action="<?php echo base_url('index.php/psic_test1/create');?>">  
+                    <form class="form-inline" method="post" action="<?php echo base_url('psic_test1/create');?>">  
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">
@@ -113,7 +113,7 @@
   <ul class="nav nav-tabs" role="tablist">
 
     <li role="presentation"><a href="#valores" aria-controls="valores" role="tab" data-toggle="tab">Valores</a></li>
-    <li role="presentation"><a href="#resultados" aria-controls="resultados" role="tab" data-toggle="tab">Resultados</a></li>
+    <li role="presentation"><a href="#resultados" aria-controls="resultados" role="tab" data-toggle="tab">Resultados/Diagnóstico</a></li>
     
   </ul>
   <!-- Tab panes -->
@@ -174,25 +174,104 @@
             <div class="panel-body">
             <div id="ver_valores"></div>
             <div id="ver_resultados"></div>
-            <strong>Resultados</strong>:
+            <strong>Resultados/Diagnóstico</strong>:
             <p>Calculados en Puntos y en Porcentaje considerando como 100% = 44 Puntos</p>
             <table class="table">
               <tr>
                 <th>Calificación</th>
                 <th>Porcentaje</th>
+                <th>Interpretación</th>
               </tr>
               <tr>
                 <td><?php echo $calificacion;?> Ptos.</td>
-                <td><?php echo number_format(($avance*100),2) . "%" ;?></td>
+                <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avance*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avance*100),2);?>%;">
+                        <?php echo number_format(($avance*100),2) . "%" ;?>
+                      </div>              
+                    </div>
+
+                </td>
+                <td>
+                AUTOESTIMA 
+                    <?php 
+                        if ( $avance > 0 AND $avance <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avance > 0.25 AND $avance <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avance > 0.50 AND $avance <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avance > 0.75 AND $avance <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--"; }
+                    ?>
+                </td>
               </tr>
             </table>
+
             <hr>
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avance*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avance*100),2);?>%;">
-                <?php echo number_format(($avance*100),2) . "%" ;?>
-              </div>              
+            <div class="page-header">
+              <h2>Interpretación Psicométrica</h2>
+              <h3>Autoestima: <span class="label label-default"> <?php 
+                        if ( $avance > 0 AND $avance <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avance > 0.25 AND $avance <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avance > 0.50 AND $avance <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avance > 0.75 AND $avance <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--";}
+                    ?> 
+                    </span>
+                    <p>
+                    <p>Descripción:</p>
+
+                    <p>
+
+                    <small> 
+              
+              <?php
+              
+                 foreach ($get_preg_test1 as $get_preg_test1_item) : ?>
+                    <?php 
+                    foreach ($get_test1 as $key => $value) :
+                      if ( !empty($get_test1)) {
+                        $var = substr($key,0,11);
+                        if ($var =='resp_test1_') {
+                          $id = substr($key,11);
+                          if ( $get_preg_test1_item['id'] == $id ) {
+                            foreach ($get_resp_test1 as $llave) {
+                              if ($llave['valor'] == $value) {
+                                switch ($llave['valor']) {
+                                case '0':
+                                  echo $get_preg_test1_item['pregunta'];
+                                  break;
+                                case '2':
+                                  echo $get_preg_test1_item['pregunta'];
+                                  break;
+                                case '3':
+                                  echo $get_preg_test1_item['pregunta'];
+                                  break;
+                                case '4':
+                                  echo $get_preg_test1_item['pregunta'];
+                                  break;
+                              }
+                               
+                              }                          
+                            }
+                          }
+                        }
+                      }                        
+                    endforeach;
+                    ?>
+                    <br>                      
+              <?php endforeach; ?>
+
+              </small> </h3>
+              
             </div>
-            </div>
+        </div>
     </div><!-- rresultados -->
   </div>
 </div>

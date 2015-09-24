@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'internal-db.s202570.gridserver.com',
-	'username' => 'db202570',
-	'password' => '3bbcQt2WtV?',
-	'database' => 'db202570_desarrollo',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'sECTUREd1',
+	'database' => 'bd_psico',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
