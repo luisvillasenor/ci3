@@ -13,6 +13,7 @@ class Resp_test1_model extends CI_Model {
 		{
 	        if ($reg_test1 === FALSE)
 	        {
+                         $this->db->order_by('valor','desc');
                 $query = $this->db->get('resp_test1');
                 return $query->result_array();
 	        }

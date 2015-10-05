@@ -1,39 +1,17 @@
-    <div class="container-fluid">
-      <div class="">
-
-               
-          <div class="jumbotron">
-            <h1>Psicometria</h1>
-            <p></p>
-            <p>
-              <a class="btn btn-primary btn-large" href="welcome/gestalt">Iniciar</a>
-            </p>
-          </div>
-        
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Test 1</h4>
-              <span class="text-muted">Autoestima</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Test 2</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Test 3</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Test 4</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="well col-sm-4 col-md-offset-4">
+      <form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input typr="email" class="form-control" id="email" name="email" placeholder="Email">
         </div>
-
-      </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input typr="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <a class="btn btn-primary btn-large" href="<?php echo base_url('index.php/home'); ?>">Iniciar</a>
+      </form>
     </div>
+  </div>
+</div>

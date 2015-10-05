@@ -3,15 +3,36 @@
         
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Crear Expediente <span class="sr-only">(current)</span></a></li>
-            <li><a href="<?php echo base_url('expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>            
+            <li class="text-center">
+              <p>
+              <img src="<?php echo base_url();?>/Amarillo-180x180.jpg" alt="FotoPerfil" class="img-circle">
+              <br>
+              <div>¡Hola, Spider!<br> Bienvenido </div>
+              <p>              
+            </li>
+            <li class="active"><a href="<?php echo base_url('index.php/gestalt'); ?>"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Paciente Nuevo</a></li>
+            <li>
+                <a href="<?php echo base_url('index.php/expedientes'); ?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Pacientes</a>
+            </li>
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"> Manual de Atencion Psicologica</a>
+            </li>
           </ul>
         </div>
 
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div class="page-header">
+          <h1>Crear Paciente</h1>
+        </div>
+
+          <ol class="breadcrumb">
+            <li><a href="<?php echo base_url('index.php/home'); ?>">Home</a></li>
+            <li><a href="<?php echo base_url('index.php/gestalt'); ?>">Crear Paciente</a></li>
+          </ol>
+
         
-        <form method="post" action="<?php echo base_url('expedientes/create');?>">
+        <form method="post" action="<?php echo base_url('index.php/expedientes/create');?>">
         <div id="rootwizard">
               <ul>
                 <li><a href="#tab1" data-toggle="tab"><span class="label">1</span> Datos del Paciente</a></li>
@@ -31,23 +52,83 @@
                           
                             <div class="form-group">
                               <label for="nombre_completo">Nombre completo</label>
-                              <input type="text" class="form-control" name="nombre_completo" id="nombre_completo" placeholder="Nombre">
+                              <input type="text" class="form-control" name="nombre_completo" id="nombre_completo" placeholder="P.ej. Juan Manuel Pérez López">
                             </div>
                             <div class="form-group">
                               <label for="edad">Edad</label>
-                              <input type="text" class="form-control" name="edad" id="edad" placeholder="Edad">
+                              <input type="text" class="form-control" name="edad" id="edad" placeholder="P.ej. 23">
                             </div>
                             
                             <div class="radio">
                               <label>
                                 <input name="sexo" id="sexo" type="radio" value="m"> Masculino
                               </label>
-                            
-                            
                               <label>
                                 <input name="sexo" id="sexo" type="radio" value="f"> Femenino
                               </label>
-                            </div>                          
+                            </div>
+                            <div class="form-group">
+                              <label for="dias_abs">Días de Abstinencia</label>
+                              <input type="text" class="form-control" name="dias_abs" id="dias_abs" placeholder="P.ej. 5">
+                            </div>
+                            <div class="form-group">
+                              <label for="droga">Groga de Impacto</label>
+                              <input type="text" class="form-control" name="droga" id="droga" placeholder="P.ej. Alcohol">
+                            </div>
+                            <div class="form-group">
+                              <label for="t_consumo">Años de consumo</label>
+                              <input type="text" class="form-control" name="t_consumo" id="t_consumo" placeholder="P.ej. 2">
+                            </div>
+                            <div class="form-group">
+                              <label for="droga_ini">Groga de inicio</label>
+                              <input type="text" class="form-control" name="droga_ini" id="droga_ini" placeholder="P.ej. Tabaco">
+                            </div>
+                            <div class="form-group">
+                              <label for="edad1con">Edad de primer consumo</label>
+                              <input type="text" class="form-control" name="edad1con" id="edad1con" placeholder="P.ej. 14">
+                            </div>
+                            <div class="form-group">
+                              <label for="edo_civ">Estado civil</label>
+                              <input type="text" class="form-control" name="edo_civ" id="edo_civ" placeholder="P.ej. Casado">
+                            </div>
+                            <div class="form-group">
+                              <label for="hijos">Número de hijos</label>
+                              <input type="text" class="form-control" name="hijos" id="hijos" placeholder="P.ej. 3">
+                            </div>
+                            <div class="form-group">
+                              <label for="escolaridad">Escolaridad</label>
+                              <input type="text" class="form-control" name="escolaridad" id="ecolaridad" placeholder="P.ej. Secundaria">
+                            </div>
+                            <label>Trabajo ...</label>
+                            <div class="radio">
+                              <label>
+                                <input name="trabajo" id="trabajo" type="radio" value="e"> Estable
+                              </label>
+                              <label>
+                                <input name="trabajo" id="trabajo" type="radio" value="t"> Temporal
+                              </label>
+                              <label>
+                                <input name="trabajo" id="trabajo" type="radio" value="d"> Desempleado
+                              </label>
+                            </div>
+                            <label>Creciste en un ...</label>
+                            <div class="radio">
+                              <label>
+                                <input name="creciste_en" id="creciste_en" type="radio" value="m"> Matrimonio
+                              </label>
+                              <label>
+                                <input name="creciste_en" id="creciste_en" type="radio" value="u"> Unión Libre
+                              </label>
+                              <label>
+                                <input name="creciste_en" id="creciste_en" type="radio" value="d"> Divorcio-Separación
+                              </label>
+                              <label>
+                                <input name="creciste_en" id="creciste_en" type="radio" value="s"> Madre Soltera
+                              </label>
+                            </div>
+
+
+                          
                       </div>
                     </div>
                   </div>
@@ -62,7 +143,7 @@
                           </div>
                           
                             <div class="form-group">
-                              <label for="aplicador">Aplicador</label>
+                              <label for="aplicador">Lugar de Aplicación</label>
                               <input type="text" class="form-control" name="aplicador" id="Aplicador" placeholder="Aplicador">
                             </div>
                             <div class="form-group">

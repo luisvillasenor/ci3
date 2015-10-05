@@ -2,15 +2,34 @@
     <div class="container-fluid">
       <div class="row">
         
-            <div class="col-sm-3 col-md-2 sidebar">
-              <ul class="nav nav-sidebar">
-                <li class="active"><a href="<?php echo base_url('expedientes'); ?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
-
-              </ul>
-            </div>
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="text-center">
+              <p>
+              <img src="<?php echo base_url();?>/Amarillo-180x180.jpg" alt="FotoPerfil" class="img-circle">
+              <br>
+              <div>¡Hola, Spider!<br> Bienvenido </div>
+              <p>              
+            </li>
+            <li><a href="<?php echo base_url('index.php/gestalt'); ?>"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Paciente Nuevo</a></li>
+            <li class="active">
+                <a href="<?php echo base_url('index.php/expedientes'); ?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Pacientes</a>
+            </li>
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"> Manual de Atencion Psicologica</a>
+            </li>
+          </ul>
+        </div>
 
 
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+          <ol class="breadcrumb">
+            <li><a href="<?php echo base_url('index.php/home'); ?>">Home</a></li>
+            <li><a href="<?php echo base_url('index.php/gestalt'); ?>">Crear Paciente</a></li>
+          </ol>
+
+
               <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading text-center"><h1>Datos del Expediente</h1></div>

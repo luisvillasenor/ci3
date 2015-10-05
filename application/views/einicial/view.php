@@ -1,54 +1,62 @@
+
     <div class="container-fluid">
       <div class="row">        
+        
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="<?php echo base_url('expedientes');?>">Mis Expedientes <span class="sr-only">(current)</span></a></li>
+            <li class="text-center">
+              <p>
+              <img src="<?php echo base_url();?>/Amarillo-180x180.jpg" alt="FotoPerfil" class="img-circle">
+              <br>
+              <div>¡Hola, Spider!<br> Bienvenido </div>
+              <p>              
+            </li>
+            <li>
+                <a href="<?php echo base_url('index.php/expedientes'); ?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Pacientes</a>
+            </li>
+            <li class="active"><a href="<?php echo base_url('index.php/einicial/'.$id_expediente.'');?>"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Paciente [ <?php echo $id_expediente;?> ]</a></li>
+
           </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <ol class="breadcrumb">
-          <li><a href="<?php echo base_url('einicial/'.$id_expediente.'');?>">Expediente <?php echo $id_expediente;?></a></li>
-          <li class="active"><?php echo $title;?></li>
-        </ol>
+
+          <ol class="breadcrumb">
+            <li><a href="<?php echo base_url('index.php/home'); ?>">Home</a></li>
+            <li><a href="<?php echo base_url('index.php/expedientes'); ?>">Pacientes</a></li>
+            <li><a href="<?php echo base_url('index.php/einicial/'.$id_expediente.'');?>">Paciente [ <?php echo $id_expediente;?> ]</a></li>
+          </ol>
        
         
                     <div class="panel panel-default">
                       <!-- Default panel contents -->
-                      <div class="panel-heading text-center"><?php echo $title;?></div>
+                      <div class="panel-heading text-center">Expediente del Paciente [ <?php echo $id_expediente;?> ]</div>
                       <div class="panel-body">
 
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Paciente: <?php echo $nombre_completo;?>
-          </div>
-        </div>
-
-
+                          <div class="panel panel-default">
+                            <div class="panel-body">
+                              Paciente: <?php echo $nombre_completo;?>
+                            </div>
+                          </div>
 
 
 <div>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
+    
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Autoestima</a></li>
+  
+    
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <br>
+
 
 
     <div role="tabpanel" class="tab-pane active" id="home">
 
-                <?php
-                      if (empty($status_test1)) { ?>
-                          <!-- Boton Modal Crear Nuevo Test1 -->
-                          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal_<?php echo $id_expediente;?>">
-                            Aplicar Nuevo Test1 <?php echo $status_test1;?>
-                          </button>
-                <?php }
-                 ?>
              
                 <!-- Modal -->
                 <div class="modal fade" id="myModal_<?php echo $id_expediente;?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -71,6 +79,7 @@
                           <div class="panel panel-default">
                             <input type="hidden" name="id_expediente" id="id_expediente" value="<?php echo $id_expediente;?>">
                             <input type="hidden" name="status_test1" id="status_test1" value="1">
+                            Fecha: <input type="date" name="fecha" id="fecha">
                             <div class="panel-body">
                                   <table class="table table-condensed">
                                     <tr>
@@ -85,8 +94,8 @@
                                             <td>
                                             <div class="form-group" data-toggle="buttons">
                                           <?php foreach ($get_resp_test1 as $get_resp_test1_item) : ?>
-                                              <label class="btn btn-default radio-inline">
-                                                <input type="radio" autocomplete="off" name="resp_test1_<?php echo $get_preg_test1_item['id'];?>" id="resp_test1" value="<?php echo $get_resp_test1_item['valor'];?>" required><?php echo $get_resp_test1_item['nombre'];?>
+                                              <label class="btn btn-primary radio-inline">
+                                                <input type="radio" autocomplete="off" name="resp_test1_<?php echo $get_preg_test1_item['id'];?>" id="resp_test1" value="<?php echo $get_resp_test1_item['valor'];?>" required><?php echo $get_resp_test1_item['nombre'];?><span class="badge"> <?php echo $get_resp_test1_item['valor'];?></span>
                                               </label>
                                           <?php endforeach; ?>
                                             </div>
@@ -105,70 +114,31 @@
                     </form>
                     </div>
                   </div>
-                </div>
-<hr>
+                </div><!-- Modal -->  
 
+<hr>
 <div>        
+
+
 <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
 
-    <li role="presentation"><a href="#valores" aria-controls="valores" role="tab" data-toggle="tab">Valores</a></li>
+                <?php
+                      if (empty($status_test1)) { ?>
+                          <!-- Boton Modal Crear Nuevo Test1 -->
+                          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal_<?php echo $id_expediente;?>">
+                            Aplicar Nuevo Test1 <?php echo $status_test1;?>
+                          </button>
+                <?php }
+                 ?>
+
+
     <li role="presentation"><a href="#resultados" aria-controls="resultados" role="tab" data-toggle="tab">Resultados/Diagnóstico</a></li>
     
   </ul>
   <!-- Tab panes -->
   <div class="tab-content">
 
-    <div role="tabpanel" class="tab-pane fade" id="valores">
-      
-            <div class="panel-body">
-            <div id="ver_valores"></div>
-            <div id="ver_resultados"></div>
-            <strong>Valores del Test 1</strong>:
-            <p>Valores por cada respuesta a las preguntas del test.</p>
-            
-            <table class="table">
-              <tr>
-                <th></th>
-                <th>Pregunta</th>
-                <th colspan="4">Respuesta</th>                
-              </tr>
-              <?php foreach ($get_preg_test1 as $get_preg_test1_item) : ?>
-                  <tr>
-                    <td><?php echo $get_preg_test1_item['id'];?></td>
-                    <td><?php echo $get_preg_test1_item['pregunta'];?></td>
-                    
-                      <td>
-                      
-                    <?php 
-                    foreach ($get_test1 as $key => $value) :
-                      if ( !empty($get_test1)) {
-                        $var = substr($key,0,11);
-                        if ($var =='resp_test1_') {
-                          $id = substr($key,11);
-                          if ( $get_preg_test1_item['id'] == $id ) {
-                            foreach ($get_resp_test1 as $llave) {
-                              if ($llave['valor'] == $value) {
-                                echo "<button class='btn btn-primary' type='button'>";
-                                echo $llave['nombre'];
-                                echo " <span class='badge'>";
-                                echo $value;
-                                echo "</badge></button>";
-                              }
-                            }
-                          }
-                        }
-                      }                        
-                    endforeach;
-                    ?>
-                      
-                      </td>                    
-                                        
-                  </tr>
-              <?php endforeach; ?>
-            </table>
-            </div>
-    </div><!-- valores -->
 
     <div role="tabpanel" class="tab-pane fade" id="resultados">
             <div class="panel-body">
@@ -245,15 +215,43 @@
                               if ($llave['valor'] == $value) {
                                 switch ($llave['valor']) {
                                 case '0':
+                                
+                                echo "<button class='btn btn-primary' type='button'>";
+                                echo $llave['nombre'];
+                                echo " <span class='badge'>";
+                                echo $value;
+                                echo "</badge></button>";
+                                
                                   echo $get_preg_test1_item['pregunta'];
                                   break;
                                 case '2':
+
+                                echo "<button class='btn btn-primary' type='button'>";
+                                echo $llave['nombre'];
+                                echo " <span class='badge'>";
+                                echo $value;
+                                echo "</badge></button>";
+                                
                                   echo $get_preg_test1_item['pregunta'];
                                   break;
                                 case '3':
+
+                                echo "<button class='btn btn-primary' type='button'>";
+                                echo $llave['nombre'];
+                                echo " <span class='badge'>";
+                                echo $value;
+                                echo "</badge></button>";
+                                
                                   echo $get_preg_test1_item['pregunta'];
                                   break;
                                 case '4':
+
+                                echo "<button class='btn btn-primary' type='button'>";
+                                echo $llave['nombre'];
+                                echo " <span class='badge'>";
+                                echo $value;
+                                echo "</badge></button>";
+
                                   echo $get_preg_test1_item['pregunta'];
                                   break;
                               }

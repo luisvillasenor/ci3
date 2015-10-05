@@ -77,7 +77,7 @@ class Expedientes extends CI_Controller {
                 $aplicador = $this->input->post('aplicador');
                 
                 $id_expediente = $this->Expedientes_model->set_expedientes($id_paciente,$miembro,$aplicador);
-                redirect('expedientes/'.$id_expediente);
+                redirect('einicial/'.$id_expediente);
             }
         }
 
