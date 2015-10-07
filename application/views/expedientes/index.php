@@ -24,13 +24,9 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
        
         <div class="page-header">
-          <h1>Pacientes</h1>
+          <h1>Listado de Pacientes</h1>
         </div>
 
-          <ol class="breadcrumb">
-            <li><a href="<?php echo base_url('index.php/home'); ?>">Home</a></li>
-            <li><a href="<?php echo base_url('index.php/expedientes'); ?>">Pacientes</a></li>
-          </ol>
 
 
                           <table class="table table-hover">
@@ -83,7 +79,7 @@
                                 </td>
 -->
                                 <td>
-                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('index.php/einicial/'.$expediente_item['id_expediente']); ?>"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Ver Expediente</a>
+                                	<a type="button" class="btn btn-primary" href="<?php echo base_url('index.php/einicial/'.$expediente_item['id_expediente']); ?>"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> BATERIA PRE</a>
                                 </td>
                                 
 

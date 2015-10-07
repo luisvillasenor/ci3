@@ -46,6 +46,7 @@ class Psic_test1 extends CI_Controller {
             $this->load->model('Expedientes_model');
             // Se reciven los resultados del Test1 via POST.
             $resp_test1['id_expediente'] = $this->input->post('id_expediente');
+            $resp_test1['fecha_aplicacion'] = $this->input->post('fecha_aplicacion');
             $resp_test1['status_test1'] = $this->input->post('status_test1');
             $resp_test1['resp_test1_1'] = $this->input->post('resp_test1_1');
             $resp_test1['resp_test1_2'] = $this->input->post('resp_test1_2');

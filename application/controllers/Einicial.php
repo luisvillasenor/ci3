@@ -28,7 +28,7 @@ class Einicial extends CI_Controller {
             $data['title'] = 'Evaluación Inicial';
             
             $data['status_test1'] = $this->Psic_test1_model->get_status_test1($id_expediente);
-                
+            
             $data['get_preg_test1'] = $this->Preg_test1_model->get_preg_test1();
             $data['get_resp_test1'] = $this->Resp_test1_model->get_resp_test1();
 
@@ -41,9 +41,25 @@ class Einicial extends CI_Controller {
                     $data['id_paciente'] = $data['expediente_item']['id_paciente'];
                     $id_paciente = $data['expediente_item']['id_paciente'];
                     $data['pacientes'] = $this->Pacientes_model->get_pacientes($id_paciente);
-                    $data['nombre_completo'] = $data['pacientes']['nombre_completo'];
 
-                    $data['get_test1'] = array(
+                    
+                    $data['nombre_completo'] = $data['pacientes']['nombre_completo'];
+                    $data['edad'] = $data['pacientes']['edad'];
+                    $data['sexo'] = $data['pacientes']['sexo'];
+                    $data['grupo'] = $data['pacientes']['grupo'];
+                    $data['dias_abs'] = $data['pacientes']['dias_abs'];
+                    $data['droga'] = $data['pacientes']['droga'];
+                    $data['t_consumo'] = $data['pacientes']['t_consumo'];
+                    $data['droga_ini'] = $data['pacientes']['droga_ini'];
+                    $data['edad1con'] = $data['pacientes']['edad1con'];
+                    $data['edo_civ'] = $data['pacientes']['edo_civ'];
+                    $data['hijos'] = $data['pacientes']['hijos'];
+                    $data['escolaridad'] = $data['pacientes']['escolaridad'];
+                    $data['trabajo'] = $data['pacientes']['trabajo'];
+                    $data['creciste_en'] = $data['pacientes']['creciste_en'];
+
+                    $data['get_test1'] = array(        
+                        'fecha_aplicacion' => '',
                         'resp_test1_1' => '',
                         'resp_test1_2' => '',
                         'resp_test1_3' => '',
@@ -57,6 +73,10 @@ class Einicial extends CI_Controller {
                         'resp_test1_10' => ''
                     );
 
+                    foreach ($data['get_test1'] as $key => $value) {
+                        $data[$key] = $value;
+                    }
+
                     $data['calificacion'] = '0';
                     $data['avance'] = '0';
 
@@ -66,7 +86,21 @@ class Einicial extends CI_Controller {
                     $data['id_paciente'] = $data['expediente_item']['id_paciente'];
                     $id_paciente = $data['expediente_item']['id_paciente'];
                     $data['pacientes'] = $this->Pacientes_model->get_pacientes($id_paciente);
+
                     $data['nombre_completo'] = $data['pacientes']['nombre_completo'];
+                    $data['edad'] = $data['pacientes']['edad'];
+                    $data['sexo'] = $data['pacientes']['sexo'];
+                    $data['grupo'] = $data['pacientes']['grupo'];
+                    $data['dias_abs'] = $data['pacientes']['dias_abs'];
+                    $data['droga'] = $data['pacientes']['droga'];
+                    $data['t_consumo'] = $data['pacientes']['t_consumo'];
+                    $data['droga_ini'] = $data['pacientes']['droga_ini'];
+                    $data['edad1con'] = $data['pacientes']['edad1con'];
+                    $data['edo_civ'] = $data['pacientes']['edo_civ'];
+                    $data['hijos'] = $data['pacientes']['hijos'];
+                    $data['escolaridad'] = $data['pacientes']['escolaridad'];
+                    $data['trabajo'] = $data['pacientes']['trabajo'];
+                    $data['creciste_en'] = $data['pacientes']['creciste_en'];
 
                     foreach ($data['get_test1'] as $key => $value) {
                         $data[$key] = $value;
