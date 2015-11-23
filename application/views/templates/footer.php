@@ -24,6 +24,11 @@ $(document).ready(function(){
       showWeek: true, 
       firstDay:1
     });
+    $( "#fecha_aplicacion_test3" ).datepicker({ 
+      dateFormat: 'yy-mm-dd', 
+      showWeek: true, 
+      firstDay:1
+    });
   });
 });      
 </script>
