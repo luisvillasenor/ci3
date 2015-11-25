@@ -34,5 +34,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function validar($email = NULL){
+
+		
+			switch ($_SERVER["REQUEST_METHOD"]) {
+			case 'GET':
+				if (isset($email)) {
+					$result = array('email' => $email);
+				}				
+				break;
+			default:
+				echo "ALGO ANDA MUY MAL -- DEFAULT";
+				break;
+			}
+			header("Content-Type: application/json");
+			echo json_encode($result);
+		
+	}
+
 
 }

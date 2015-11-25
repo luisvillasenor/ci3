@@ -24,15 +24,81 @@ $(document).ready(function(){
       showWeek: true, 
       firstDay:1
     });
+    $( "#fecha_aplicacion_test2" ).datepicker({ 
+      dateFormat: 'yy-mm-dd', 
+      showWeek: true, 
+      firstDay:1
+    });
+
     $( "#fecha_aplicacion_test3" ).datepicker({ 
       dateFormat: 'yy-mm-dd', 
       showWeek: true, 
       firstDay:1
     });
+    $( "#fecha_aplicacion_test4" ).datepicker({ 
+      dateFormat: 'yy-mm-dd', 
+      showWeek: true, 
+      firstDay:1
+    });
+
   });
 });      
 </script>
 
+<script type="text/javascript">
+var myRequest = getXMLHTTPRequest();
+function getXMLHTTPRequest()
+{
+  var request = false;
+  if (window.XMLHttpRequest) 
+  {
+    request = new XMLHttpRequest();
+  } else {
+    if (window.ActiveXObject) 
+    {
+      try 
+      {
+        request = new ActiveXObject("Msml2.XMLHTTP");
+      }
+      catch(err1)
+      {
+        try
+        {
+          request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch(err2)
+        {
+          request = false;
+        }
+      }
+    }
+  }
+  return request;
+}
 
-  </body>
+function ejecutarAJAX() {
+  var email = document.getElementById("LoginForm").elements.namedItem("email").value;
+  var url = "http://localhost/ci3/index.php/welcome/validar/" + email;
+  myRequest.open("GET", url, true);
+  myRequest.onreadystatechange = respuestaAJAX;
+  myRequest.send(null);
+}
+
+function respuestaAJAX() {
+  if (myRequest.readyState == 4) {
+    if (myRequest.status == 200) {
+      document.getElementById('respuesta').innerHTML = myRequest.responseText;
+    } else {
+      document.getElementById('respuesta').innerHTML = myRequest.status;
+    }
+  } else {
+    document.getElementById('respuesta').innerHTML = myRequest.responseText;
+  }
+}
+
+
+</script>
+
+
+</body>
 </html>

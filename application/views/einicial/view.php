@@ -76,8 +76,7 @@
             <ul class="dropdown-menu">
               <li role="presentation"><a href="#C" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Autoestima</a></li>
               <li role="presentation"><a href="#D" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
-              <li role="presentation"><a href="#E" aria-controls="E" role="tab" data-toggle="tab">Informe Clinico</a></li>
-              <li role="presentation"><a href="#F" aria-controls="F" role="tab" data-toggle="tab">Informe Familiar</a></li>
+              
             </ul>
           </li>
           <!-- Opciones del Test Salma -->
@@ -88,8 +87,7 @@
             <ul class="dropdown-menu">
               <li role="presentation"><a href="#G" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Salama</a></li>
               <li role="presentation"><a href="#H" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
-              <li role="presentation"><a href="#I" aria-controls="E" role="tab" data-toggle="tab">Informe Clinico</a></li>
-              <li role="presentation"><a href="#J" aria-controls="F" role="tab" data-toggle="tab">Informe Familiar</a></li>
+              
             </ul>
           </li>
           <!-- Opciones del Test Ansiedad -->
@@ -100,8 +98,7 @@
             <ul class="dropdown-menu">
               <li role="presentation"><a href="#K" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Ansiedad y Depresión</a></li>
               <li role="presentation"><a href="#L" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
-              <li role="presentation"><a href="#M" aria-controls="E" role="tab" data-toggle="tab">Informe Clinico</a></li>
-              <li role="presentation"><a href="#N" aria-controls="F" role="tab" data-toggle="tab">Informe Familiar</a></li>
+              
             </ul>
           </li>
           <!-- Opciones del Test Neurosis -->
@@ -112,8 +109,6 @@
             <ul class="dropdown-menu">
               <li role="presentation"><a href="#O" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Neurosis</a></li>
               <li role="presentation"><a href="#P" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
-              <li role="presentation"><a href="#Q" aria-controls="E" role="tab" data-toggle="tab">Informe Clinico</a></li>
-              <li role="presentation"><a href="#R" aria-controls="F" role="tab" data-toggle="tab">Informe Familiar</a></li>
             </ul>
           </li>          
         </ul>
@@ -248,7 +243,7 @@
                                       echo $value;
                                       echo "</badge></button>";
                                       
-                                      echo $get_preg_test1_item['pregunta'];
+                                      echo $get_preg_test1_item['interpretacion'];
                                       break;
                                       case '2':
 
@@ -258,7 +253,7 @@
                                       echo $value;
                                       echo "</badge></button>";
                                       
-                                      echo $get_preg_test1_item['pregunta'];
+                                      echo $get_preg_test1_item['interpretacion'];
                                       break;
                                       case '3':
 
@@ -268,7 +263,7 @@
                                       echo $value;
                                       echo "</badge></button>";
                                       
-                                      echo $get_preg_test1_item['pregunta'];
+                                      echo $get_preg_test1_item['interpretacion'];
                                       break;
                                       case '4':
 
@@ -278,7 +273,7 @@
                                       echo $value;
                                       echo "</badge></button>";
 
-                                      echo $get_preg_test1_item['pregunta'];
+                                      echo $get_preg_test1_item['interpretacion'];
                                       break;
                                     }
                                   }
@@ -298,7 +293,56 @@
           <div role="tabpanel" class="tab-pane" id="E">Aquí el informe clinico</div>
           <div role="tabpanel" class="tab-pane" id="F">Aquí el informe familiar</div>
           <!-- Opciones del Test Salma -->
-          <div role="tabpanel" class="tab-pane" id="G">GC Salama</div>
+          <div role="tabpanel" class="tab-pane" id="G">
+            <form class="form-inline" method="post" action="<?php echo base_url('#');?>">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                      &times;
+                    </span>                          
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    <h2>Salama</h2>
+                    <h3>Instrucciones: Responde la opción tomando en cuenta el Aquí y el Ahora. Como te sientas ahora.</h3>
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <div class="panel panel-default">
+                    <input type="hidden" name="id_expediente" id="id_expediente" value="<?php echo $id_expediente;?>">
+                    <input type="hidden" name="status_test2" id="status_test2" value="1">
+                    Fecha de aplicación: <input type="date" name="fecha_aplicacion_test2" id="fecha_aplicacion_test2">
+                    <div class="panel-body">
+                      <table class="table table-condensed">
+                        <tr>
+                          <th></th>
+                          <th>Pregunta</th>
+                          <th colspan="4">Respuesta</th>                
+                        </tr>
+                        <?php foreach ($get_preg_test2 as $get_preg_test2_item) : ?>
+                          <tr>
+                            <td><?php echo $get_preg_test2_item['id'];?></td>
+                            <td><?php echo $get_preg_test2_item['pregunta'];?></td>
+                              <td>
+                                  <div class="form-group" data-toggle="buttons">
+                                  <?php foreach ($get_resp_test2 as $get_resp_test2_item) : ?>
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test2_<?php echo $get_preg_test2_item['id'];?>" id="resp_test2_<?php echo $get_preg_test2_item['id'];?>" value="<?php echo $get_resp_test2_item['valor'];?>" required><?php echo $get_resp_test2_item['respuesta'];?>
+                                    </label>
+                                  <?php endforeach; ?>
+                                  </div>
+                              </td>                    
+                          </tr>
+                        <?php endforeach; ?>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <input type="submit" class="btn btn-success">
+                </div>
+              </form>                        
+          </div>
           <div role="tabpanel" class="tab-pane" id="H">GH Salama</div>
           <div role="tabpanel" class="tab-pane" id="I">GI Salama</div>
           <div role="tabpanel" class="tab-pane" id="J">GJ Salama</div>
@@ -369,7 +413,81 @@
           <div role="tabpanel" class="tab-pane" id="M">GI Ansiedad y Depresión</div>
           <div role="tabpanel" class="tab-pane" id="N">GJ Ansiedad y Depresión</div>
           <!-- Opciones del Test Neurosis -->
-          <div role="tabpanel" class="tab-pane" id="O">GC Neurosis</div>
+          <div role="tabpanel" class="tab-pane" id="O">
+            <form class="form-inline" method="post" action="<?php echo base_url('#');?>">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                      &times;
+                    </span>                          
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    <h2>Neurosis</h2>
+                    <h3>Instrucciones: selecciona en cada pregunta la opción que corresponda a tu sentir actual</h3>
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <div class="panel panel-default">
+                    <input type="hidden" name="id_expediente" id="id_expediente" value="<?php echo $id_expediente;?>">
+                    <input type="hidden" name="status_test4" id="status_test4" value="1">
+                    Fecha de aplicación: <input type="date" name="fecha_aplicacion_test4" id="fecha_aplicacion_test4">
+                    <div class="panel-body">
+                      <table class="table table-condensed">
+                        <tr>
+                          <th></th>
+                          <th>Pregunta</th>
+                          <th colspan="4">Respuesta</th>                
+                        </tr>
+                        <?php foreach ($get_preg_test4 as $get_preg_test4_item) : ?>
+                          <tr>
+                            <td><?php echo $get_preg_test4_item['id'];?></td>
+                            <td><?php echo $get_preg_test4_item['pregunta'];?></td>
+                              <td>
+                              <?php if ( $get_preg_test4_item['id'] != 8 AND $get_preg_test4_item['id'] != 16 ) { ?>
+                                  <div class="form-group" data-toggle="buttons">
+                                  <?php foreach ($get_resp_test4 as $get_resp_test4_item) : ?>
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test4_<?php echo $get_preg_test4_item['id'];?>" id="resp_test4_<?php echo $get_preg_test4_item['id'];?>" value="<?php echo $get_resp_test4_item['valor'];?>" required><?php echo $get_resp_test4_item['respuesta'];?>
+                                    </label>
+                                  <?php endforeach; ?>
+                                  </div>
+                              <?php } elseif ($get_preg_test4_item['id'] == 8) { ?>
+                                    <div class="form-group" data-toggle="buttons">
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test4_<?php echo $get_preg_test4_item['id'];?>" id="resp_test4_<?php echo $get_preg_test4_item['id'];?>" value="1" required>SI, Nadie me entiende
+                                    </label>
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test4_<?php echo $get_preg_test4_item['id'];?>" id="resp_test4_<?php echo $get_preg_test4_item['id'];?>" value="0" required>NO
+                                    </label>
+                                    </div>  
+                              <?php } elseif ($get_preg_test4_item['id'] == 16) { ?>
+                                    <div class="form-group" data-toggle="buttons">
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test4_<?php echo $get_preg_test4_item['id'];?>" id="resp_test4_<?php echo $get_preg_test4_item['id'];?>" value="1" required>SI, no confío
+                                    </label>
+                                    <label class="btn btn-primary radio-inline">
+                                      <input type="radio" autocomplete="off" name="resp_test4_<?php echo $get_preg_test4_item['id'];?>" id="resp_test4_<?php echo $get_preg_test4_item['id'];?>" value="0" required>NO, sí confío
+                                    </label>
+                                  </div>
+                              <?php } ?>
+                                  
+                              
+
+
+                              
+                              </td>                    
+                          </tr>
+                        <?php endforeach; ?>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <input type="submit" class="btn btn-success">
+                </div>
+              </form>            
+          </div>
           <div role="tabpanel" class="tab-pane" id="P">GH Neurosis</div>
           <div role="tabpanel" class="tab-pane" id="Q">GI Neurosis</div>
           <div role="tabpanel" class="tab-pane" id="R">GJ Neurosis</div>
