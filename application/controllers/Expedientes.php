@@ -7,6 +7,9 @@ class Expedientes extends CI_Controller {
                 $this->load->model('Expedientes_model');
                 $this->load->model('Pacientes_model');
                 $this->load->model('Psic_test1_model');
+                $this->load->model('Psic_test2_model');
+                $this->load->model('Psic_test3_model');
+                $this->load->model('Psic_test4_model');
                 $this->load->helper('url_helper');
         }
 
@@ -39,6 +42,7 @@ class Expedientes extends CI_Controller {
                         }
                         $this->Expedientes_model->update_status_test1($id_expediente,$avance_test1);
                         $data['expediente_item'] = $this->Expedientes_model->get_expedientes($id_expediente);
+
                     }
                 }
 

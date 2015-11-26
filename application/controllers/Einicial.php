@@ -38,9 +38,9 @@ class Einicial extends CI_Controller {
 
         public function view($id_expediente = NULL)
         {
-            $data['title'] = 'Evaluación Inicial';
+            $data['title'] = 'PROTOCOLO GESTALT';
             $data['expediente_item'] = $this->Expedientes_model->get_expedientes($id_expediente);
-
+            $status_test1 = $data['expediente_item']['status_test1'];
             // TEST1
             $data['status_test1'] = $this->Psic_test1_model->get_status_test1($id_expediente);
             $data['get_preg_test1'] = $this->Preg_test1_model->get_preg_test1();

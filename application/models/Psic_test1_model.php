@@ -1,10 +1,25 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Psicometria Web App - Psicometria del Test1 Model
+ *
+ * Psicometria Web App es una aplicación web para CodeIgniter 3
+ *
+ * @package     Psicometria Web App
+ * @author      Luis G. Villaseñor
+ * @copyright   Copyright (c) 2015, Luis G. Villaseñor. (http://luisgvillasenor.com/)
+ * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
+ * @link        http://luisgvillasenor.com/ci3
+ */
+
 class Psic_test1_model extends CI_Model {
 
         public function __construct()
         {
-                $this->load->database();
+            parent::__construct();
             
+            $this->load->database();
         }
 
         public function get_test1($id_expediente = FALSE)
@@ -14,9 +29,17 @@ class Psic_test1_model extends CI_Model {
                 $query = $this->db->get('psic_test1');
                 return $query->result_array();
             }
-
+            
+            $this->db->limit(1);
             $query = $this->db->get_where('psic_test1', array('id_expediente' => $id_expediente));
-            return $query->row_array();
+            if ( $query->num_rows() == 1 )
+            {
+                // return $query->row(); // Devuelve el registro en forma de Objeto
+                return $query->row_array(); // Devuelve el registro en forma de Arreglo
+            }
+            
+            return FALSE;
+
         }
 
         /**
@@ -85,7 +108,14 @@ class Psic_test1_model extends CI_Model {
             
             $this->db->limit(1);
             $query = $this->db->get_where('psic_test1', array('id' => $insert_id));
-            return $query->row_array();
+            if ( $query->num_rows() == 1 )
+            {
+                // return $query->row(); // Devuelve el registro en forma de Objeto
+                return $query->row_array(); // Devuelve el registro en forma de Arreglo
+            }
+            
+            return FALSE;
+
         }
 
         public function update_calificacion($calificacion,$insert_id){

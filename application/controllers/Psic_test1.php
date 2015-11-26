@@ -44,21 +44,25 @@ class Psic_test1 extends CI_Controller {
             $this->load->helper('form');
             $this->load->model('Psic_test1_model');
             $this->load->model('Expedientes_model');
-            // Se reciven los resultados del Test1 via POST.
-            $resp_test1['id_expediente'] = $this->input->post('id_expediente');
-            $resp_test1['fecha_aplicacion'] = $this->input->post('fecha_aplicacion');
-            $resp_test1['status_test1'] = $this->input->post('status_test1');
-            $resp_test1['resp_test1_1'] = $this->input->post('resp_test1_1');
-            $resp_test1['resp_test1_2'] = $this->input->post('resp_test1_2');
-            $resp_test1['resp_test1_3'] = $this->input->post('resp_test1_3');
-            $resp_test1['resp_test1_4'] = $this->input->post('resp_test1_4');
-            $resp_test1['resp_test1_5'] = $this->input->post('resp_test1_5');
-            $resp_test1['resp_test1_6'] = $this->input->post('resp_test1_6');
-            $resp_test1['resp_test1_7'] = $this->input->post('resp_test1_7');
-            $resp_test1['resp_test1_8'] = $this->input->post('resp_test1_8');
-            $resp_test1['resp_test1_9'] = $this->input->post('resp_test1_9');
-            $resp_test1['resp_test1_10'] = $this->input->post('resp_test1_10');
-            $resp_test1['resp_test1_11'] = $this->input->post('resp_test1_11');
+
+            // Se reciven los resultados del Test1 via POST y se almacenan en un arreglo
+            $resp_test1 = array(
+                'id_expediente' => $this->input->post('id_expediente'),
+                'fecha_aplicacion' => $this->input->post('fecha_aplicacion'),
+                'status_test1' => $this->input->post('status_test1'),
+                'resp_test1_1' => $this->input->post('resp_test1_1'),
+                'resp_test1_2' => $this->input->post('resp_test1_2'),
+                'resp_test1_3' => $this->input->post('resp_test1_3'),
+                'resp_test1_4' => $this->input->post('resp_test1_4'),
+                'resp_test1_5' => $this->input->post('resp_test1_5'),
+                'resp_test1_6' => $this->input->post('resp_test1_6'),
+                'resp_test1_7' => $this->input->post('resp_test1_7'),
+                'resp_test1_8' => $this->input->post('resp_test1_8'),
+                'resp_test1_9' => $this->input->post('resp_test1_9'),
+                'resp_test1_10' => $this->input->post('resp_test1_10'),
+                'resp_test1_11' => $this->input->post('resp_test1_11')
+            );
+
             // Agrego respuestas del Test1 a la BD.
             $insert_id = $this->Psic_test1_model->set_psic_test1($resp_test1);
             // Calcula la calificacion y actualiza el campo calificacion

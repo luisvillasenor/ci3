@@ -18,7 +18,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <div class="panel panel-default">
           <!-- Default panel contents -->
-          <div class="panel-heading text-center"><h1>PROTOCOLO GESTALT</h1> [Expediente: <?php echo $id_expediente;?> ]</div>
+          <div class="panel-heading text-center"><h1><?php echo $title; ?></h1> [Expediente: <?php echo $id_expediente;?> ]</div>
           <div class="panel-body">
             <div class="panel panel-default">
               <div class="panel-body">
@@ -111,6 +111,17 @@
               <li role="presentation"><a href="#P" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
             </ul>
           </li>          
+          <!-- Opciones del TOTALES PRE y POST -->
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Totales y Diagnóstico<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li role="presentation"><a href="#pre" aria-controls="pre" role="tab" data-toggle="tab">Totales Pre</a></li>
+              <li role="presentation"><a href="#diagnostico" aria-controls="diagnostico" role="tab" data-toggle="tab">Diagnóstico</a></li>
+            </ul>
+          </li>          
+
         </ul>
 
         <!-- Tab panes -->
@@ -491,6 +502,94 @@
           <div role="tabpanel" class="tab-pane" id="P">GH Neurosis</div>
           <div role="tabpanel" class="tab-pane" id="Q">GI Neurosis</div>
           <div role="tabpanel" class="tab-pane" id="R">GJ Neurosis</div>
+          <!-- Opciones de TOTALES PRE -->
+          <div role="tabpanel" class="tab-pane" id="pre">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="info">
+                  <th></th>
+                  <th>Bateria</th>
+                  <th>Autoestima</th>
+                  <th>Ansiedad</th>
+                  <th>Depresión</th>
+                  <th>Neurosis</th>
+                  <th>Salama</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="info">Total Pts x 100</td>
+                  <td class="">X / 166</td>
+                  <td class="">X / 44</td>
+                  <td class="">X / 21</td>
+                  <td class="">X / 21</td>
+                  <td class="">X / 16</td>
+                  <td class="">X / 64</td>
+                </tr>
+                <tr>
+                  <td class="info">%</td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="diagnostico">
+            <h2>Psicometría Gestalt</h2>
+            <h2>Nombre del Paciente</h2>
+            <hr>
+            <table class="table table-bordered">
+              <thead>
+                <tr class="info">
+                  <th></th>
+                  <th>Bateria</th>
+                  <th>Autoestima</th>
+                  <th>Ansiedad</th>
+                  <th>Depresión</th>
+                  <th>Neurosis</th>
+                  <th>Salama</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="info">Total Pts x 100</td>
+                  <td class="">X / 166</td>
+                  <td class="">X / 44</td>
+                  <td class="">X / 21</td>
+                  <td class="">X / 21</td>
+                  <td class="">X / 16</td>
+                  <td class="">X / 64</td>
+                </tr>
+                <tr>
+                  <td class="info">%</td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                  <td class="default"></td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <h3>Autoestima</h3>
+            <h3>Ansiedad</h3>
+            <h3>Depresión</h3>
+            <h3>Neurosis</h3>
+            <h3>Salama</h3>
+            <h4>F8</h4>
+            <h4>F7</h4>
+            <h4>F6</h4>
+            <h4>F5</h4>
+            <h4>F4</h4>
+            <h4>F3</h4>
+            <h4>F2</h4>
+            <h4>F1</h4>
+          </div>
         </div>
 
 

@@ -1,26 +1,56 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Psicometria Web App - Expedientes Model
+ *
+ * Psicometria Web App es una aplicación web para CodeIgniter 3
+ *
+ * @package     Psicometria Web App
+ * @author      Luis G. Villaseñor
+ * @copyright   Copyright (c) 2015, Luis G. Villaseñor. (http://luisgvillasenor.com/)
+ * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
+ * @link        http://luisgvillasenor.com/ci3
+ */
+
 class Expedientes_model extends CI_Model {
 
-        public function __construct()
+	/**
+	 * Class Constructor
+	 */
+    public function __construct()
+    {
+		parent::__construct();
+
+        $this->load->database();
+        define("TABLA", "expedientes");
+    }
+
+	// --------------------------------------------------------------
+
+    /**
+    * 
+    */
+    public function get_expedientes($id_expediente = FALSE)
+	{
+        if ($id_expediente === FALSE)
         {
-            $this->load->database();
-            define("TABLA", "expedientes");
+            $query = $this->db->get(TABLA);
+            return $query->result_array();
         }
 
-        /**
-        * 
-        */
-        public function get_expedientes($id_expediente = FALSE)
-		{
-	        if ($id_expediente === FALSE)
-	        {
-                $query = $this->db->get(TABLA);
-                return $query->result_array();
-	        }
+        $this->db->limit(1);
+        $query = $this->db->get_where(TABLA, array('id_expediente' => $id_expediente));
 
-	        $query = $this->db->get_where(TABLA, array('id_expediente' => $id_expediente));
-	        return $query->row_array();
+		if ( $query->num_rows() == 1 )
+		{
+			// return $query->row(); // Devuelve el registro en forma de Objeto
+			return $query->row_array(); // Devuelve el registro en forma de Arreglo
 		}
+		
+		return FALSE;
+
+	}
 
 		/**
         * 
