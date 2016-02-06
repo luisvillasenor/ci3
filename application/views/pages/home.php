@@ -6,7 +6,7 @@
           <ul class="nav nav-sidebar">
             <li class="text-center">
               <p>
-              <img src="<?php echo base_url();?>/Amarillo-180x180.jpg" alt="FotoPerfil" class="img-circle">
+              <img src="<?php echo base_url();?>Amarillo-180x180.jpg" alt="FotoPerfil" class="img-circle">
               <br>
               <div>¡Hola, Spider!<br> Bienvenido </div>
               <p>              

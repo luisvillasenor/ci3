@@ -5,7 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------------
 | URI ROUTING
 | -------------------------------------------------------------------------
-*/
+
+
+
+
 $route['resultadostest1/create'] = 'resultadostest1/create';
 $route['resultadostest1/(:any)'] = 'resultadostest1/view/$1';
 $route['resultadostest1'] = 'resultadostest1';
@@ -24,3 +27,6 @@ $route['expedientes'] = 'expedientes';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
+*/
+$route['default_controller'] = 'welcome';
+

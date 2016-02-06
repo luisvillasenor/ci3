@@ -81,6 +81,28 @@ class Expedientes_model extends CI_Model {
         	$this->db->update(TABLA, $data);
         	$this->update_status_exp($id_expediente,$avance_test1);
 		}
+		public function update_status_test3($id_expediente,$avance_test3)
+		{
+		    
+		    $data = array(
+		        'fecha_ult_acc' => date('Y-m-d H:i:s'),
+		        'status_test3' => $avance_test3
+		    );
+		    $this->db->where('id_expediente', $id_expediente);
+        	$this->db->update(TABLA, $data);
+        	$this->update_status_exp($id_expediente,$avance_test1);
+		}
+		public function update_status_test4($id_expediente,$avance_test4)
+		{
+		    $this->load->helper('url');
+		    $data = array(
+		        'fecha_ult_acc' => date('Y-m-d H:i:s'),
+		        'status_test4' => $avance_test4
+		    );
+		    $this->db->where('id_expediente', $id_expediente);
+        	$this->db->update(TABLA, $data);
+        	$this->update_status_exp($id_expediente,$avance_test4);
+		}
 
 		public function update_status_exp($id_expediente,$avance_test1)
 		{

@@ -254,7 +254,7 @@ class Einicial extends CI_Controller {
                     $data['creciste_en'] = $data['pacientes']['creciste_en'];
 
                     $data['get_test3'] = array(        
-                        'fecha_aplicacion' => '',
+                        'fecha_aplicacion_test3' => '',
                         'resp_test3_1' => '',
                         'resp_test3_2' => '',
                         'resp_test3_3' => '',
@@ -275,8 +275,10 @@ class Einicial extends CI_Controller {
                         $data[$key_test3] = $value_test3;
                     }
 
-                    $data['calificacion_test3'] = '0';
-                    $data['avance_test3'] = '0';
+                    $data['ansiedad'] = '0';
+                    $data['depresion'] = '0';
+                    $data['avanceansiedad'] = '0';
+                    $data['avancedepresion'] = '0';
 
             }
             else{
@@ -303,8 +305,10 @@ class Einicial extends CI_Controller {
                     foreach ($data['get_test3'] as $key_test3 => $value_test3) {
                         $data[$key_test3] = $value_test3;
                     }
-                    $data['calificacion_test3'] = $data['get_test3']['calificacion'];
-                    $data['avance_test3'] = $data['get_test3']['avance'];
+                    $data['ansiedad'] = $data['get_test3']['ansiedad'];
+                    $data['depresion'] = $data['get_test3']['depresion'];
+                    $data['avanceansiedad'] = $data['get_test3']['avanceansiedad'];
+                    $data['avancedepresion'] = $data['get_test3']['avancedepresion'];
             }
 
             // TEST4
@@ -358,8 +362,8 @@ class Einicial extends CI_Controller {
                         $data[$key_test4] = $value_test4;
                     }
 
-                    $data['calificacion_test4'] = '0';
-                    $data['avance_test4'] = '0';
+                    $data['neurosis'] = '0';
+                    $data['avanceneurosis'] = '0';
 
             }
             else{
@@ -386,8 +390,8 @@ class Einicial extends CI_Controller {
                     foreach ($data['get_test4'] as $key_test4 => $value_test4) {
                         $data[$key_test4] = $value_test4;
                     }
-                    $data['calificacion_test4'] = $data['get_test4']['calificacion'];
-                    $data['avance_test4'] = $data['get_test4']['avance'];
+                    $data['neurosis'] = $data['get_test4']['neurosis'];
+                    $data['avanceneurosis'] = $data['get_test4']['avanceneurosis'];
             }
             ///////////////////////////////////////////////
             $this->load->view('templates/header', $data);

@@ -96,9 +96,9 @@
               Ansiedad y Depresión PRE <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li role="presentation"><a href="#K" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Ansiedad y Depresión</a></li>
-              <li role="presentation"><a href="#L" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
-              
+              <li role="presentation"><a href="#ansiedad" aria-controls="ansiedad" role="tab" data-toggle="tab">Aplicar Test Ansiedad y Depresión</a></li>
+              <li role="presentation"><a href="#ansiedadresultado" aria-controls="ansiedadresultado" role="tab" data-toggle="tab">Resultados de Ansiedad</a></li>
+              <li role="presentation"><a href="#depresionresultado" aria-controls="depresionresultado" role="tab" data-toggle="tab">Resultados de Depresion</a></li>
             </ul>
           </li>
           <!-- Opciones del Test Neurosis -->
@@ -107,8 +107,8 @@
               Neurosis PRE <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li role="presentation"><a href="#O" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Neurosis</a></li>
-              <li role="presentation"><a href="#P" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
+              <li role="presentation"><a href="#neurosis" aria-controls="C" role="tab" data-toggle="tab">Aplicar Test Neurosis</a></li>
+              <li role="presentation"><a href="#neurosisresultado" aria-controls="D" role="tab" data-toggle="tab">Resultados del test</a></li>
             </ul>
           </li>          
           <!-- Opciones del TOTALES PRE y POST -->
@@ -301,8 +301,7 @@
               </div>
             </div><!-- body -->
           </div>
-          <div role="tabpanel" class="tab-pane" id="E">Aquí el informe clinico</div>
-          <div role="tabpanel" class="tab-pane" id="F">Aquí el informe familiar</div>
+          
           <!-- Opciones del Test Salma -->
           <div role="tabpanel" class="tab-pane" id="G">
             <form class="form-inline" method="post" action="<?php echo base_url('#');?>">
@@ -355,12 +354,10 @@
               </form>                        
           </div>
           <div role="tabpanel" class="tab-pane" id="H">GH Salama</div>
-          <div role="tabpanel" class="tab-pane" id="I">GI Salama</div>
-          <div role="tabpanel" class="tab-pane" id="J">GJ Salama</div>
+          
           <!-- Opciones del Test Ansiedad -->
-          <div role="tabpanel" class="tab-pane" id="K">
-            
-            <form class="form-inline" method="post" action="<?php echo base_url('#');?>">
+          <div role="tabpanel" class="tab-pane" id="ansiedad">
+            <form class="form-inline" method="post" action="<?php echo base_url('psic_test3/create');?>">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -420,12 +417,129 @@
                 </div>
               </form>
           </div>
-          <div role="tabpanel" class="tab-pane" id="L">GH Ansiedad y Depresión</div>
-          <div role="tabpanel" class="tab-pane" id="M">GI Ansiedad y Depresión</div>
-          <div role="tabpanel" class="tab-pane" id="N">GJ Ansiedad y Depresión</div>
+          <div role="tabpanel" class="tab-pane" id="ansiedadresultado">
+            <div class="panel-body">
+              <strong>Resultados de Ansiedad</strong>:
+              <p>Calculados en Puntos y en Porcentaje considerando como 100% = 21 Puntos cada uno, es decir 21 puntos para Ansiedad y 21 par Depresion</p>
+              <table class="table">
+                <tr>
+                  <th>Ansiedad</th>
+                  <th>Porcentaje</th>
+                  <th>Interpretación</th>
+                </tr>
+                <tr>
+                  <td><?php echo $ansiedad;?> Ptos.</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avanceansiedad*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avanceansiedad*100),2);?>%;">
+                        <?php echo number_format(($avanceansiedad*100),2) . "%" ;?>
+                      </div>              
+                    </div>
+                  </td>
+                  <td>
+                    ANSIEDAD 
+                    <?php 
+                        if ( $avanceansiedad > 0 AND $avanceansiedad <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avanceansiedad > 0.25 AND $avanceansiedad <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avanceansiedad > 0.50 AND $avanceansiedad <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avanceansiedad > 0.75 AND $avanceansiedad <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--"; }
+                    ?>
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <div class="page-header">
+                <h2>Interpretación Psicométrica</h2>
+                <h3>Ansiedad: 
+                  <span class="label label-default"> 
+                  <?php 
+                        if ( $avanceansiedad > 0 AND $avanceansiedad <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avanceansiedad > 0.25 AND $avanceansiedad <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avanceansiedad > 0.50 AND $avanceansiedad <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avanceansiedad > 0.75 AND $avanceansiedad <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--";}
+                  ?> 
+                  </span>
+                  <p>
+                  <p>Descripción:</p>
+                  <p>
+                  
+                </h3>
+              </div>
+            </div><!-- body -->
+          </div>
+          <div role="tabpanel" class="tab-pane" id="depresionresultado">
+            <div class="panel-body">
+              <strong>Resultados de Depresion</strong>:
+              <p>Calculados en Puntos y en Porcentaje considerando como 100% = 21 Puntos cada uno, es decir 21 puntos para Ansiedad y 21 par Depresion</p>
+              <table class="table">
+                <tr>
+                  <th>Depresion</th>
+                  <th>Porcentaje</th>
+                  <th>Interpretación</th>
+                </tr>
+                <tr>
+                  <td><?php echo $depresion;?> Ptos.</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avancedepresion*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avancedepresion*100),2);?>%;">
+                        <?php echo number_format(($avancedepresion*100),2) . "%" ;?>
+                      </div>              
+                    </div>
+                  </td>
+                  <td>
+                    DEPRESION 
+                    <?php 
+                        if ( $avancedepresion > 0 AND $avancedepresion <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avancedepresion > 0.25 AND $avancedepresion <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avancedepresion > 0.50 AND $avancedepresion <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avancedepresion > 0.75 AND $avancedepresion <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--"; }
+                    ?>
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <div class="page-header">
+                <h2>Interpretación Psicométrica</h2>
+                <h3>Depresion: 
+                  <span class="label label-default"> 
+                  <?php 
+                        if ( $avancedepresion > 0 AND $avancedepresion <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avancedepresion > 0.25 AND $avanceansiedad <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avancedepresion > 0.50 AND $avancedepresion <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avancedepresion > 0.75 AND $avancedepresion <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--";}
+                  ?> 
+                  </span>
+                  <p>
+                  <p>Descripción:</p>
+                  <p>
+                  
+                </h3>
+              </div>
+            </div><!-- body -->
+          </div>
           <!-- Opciones del Test Neurosis -->
-          <div role="tabpanel" class="tab-pane" id="O">
-            <form class="form-inline" method="post" action="<?php echo base_url('#');?>">
+          <div role="tabpanel" class="tab-pane" id="neurosis">
+            <form class="form-inline" method="post" action="<?php echo base_url('psic_test4/create');?>">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">
@@ -481,11 +595,7 @@
                                     </label>
                                   </div>
                               <?php } ?>
-                                  
-                              
-
-
-                              
+                                                          
                               </td>                    
                           </tr>
                         <?php endforeach; ?>
@@ -499,9 +609,130 @@
                 </div>
               </form>            
           </div>
-          <div role="tabpanel" class="tab-pane" id="P">GH Neurosis</div>
-          <div role="tabpanel" class="tab-pane" id="Q">GI Neurosis</div>
-          <div role="tabpanel" class="tab-pane" id="R">GJ Neurosis</div>
+          <div role="tabpanel" class="tab-pane" id="neurosisresultado">
+            <div class="panel-body">
+              <strong>Resultados Neurosis</strong>:
+              <p>Calculados en Puntos y en Porcentaje considerando como 100% = 16 Puntos</p>
+              <table class="table">
+                <tr>
+                  <th>Calificación</th>
+                  <th>Porcentaje</th>
+                  <th>Interpretación</th>
+                </tr>
+                <tr>
+                  <td><?php echo $neurosis;?> Ptos.</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo number_format(($avanceneurosis*100),2);?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo number_format(($avanceneurosis*100),2);?>%;">
+                        <?php echo number_format(($avanceneurosis*100),2) . "%" ;?>
+                      </div>              
+                    </div>
+                  </td>
+                  <td>
+                    NEUROSIS 
+                    <?php 
+                        if ( $avanceneurosis > 0 AND $avanceneurosis <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avanceneurosis > 0.25 AND $avanceneurosis <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avanceneurosis > 0.50 AND $avanceneurosis <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avanceneurosis > 0.75 AND $avanceneurosis <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--"; }
+                    ?>
+                  </td>
+                </tr>
+              </table>
+              <hr>
+              <div class="page-header">
+                <h2>Interpretación Psicométrica</h2>
+                <h3>Neurosis: 
+                  <span class="label label-default"> 
+                  <?php 
+                        if ( $avanceneurosis > 0 AND $avanceneurosis <= 0.25 ) {
+                          echo "MUY ALTA";
+                        }elseif ( $avanceneurosis > 0.25 AND $avanceneurosis <= 0.50 ) {
+                          echo "ALTA";
+                        }elseif ( $avanceneurosis > 0.50 AND $avanceneurosis <= 0.75 ) {
+                          echo "MEDIA";
+                        }elseif ( $avanceneurosis > 0.75 AND $avanceneurosis <= 1 ) {
+                          echo "BAJA";
+                        }else{ echo "--";}
+                  ?> 
+                  </span>
+                  <p>
+                  <p>Descripción:</p>
+                  <p>
+                  <small> 
+                    <?php
+                      foreach ($get_preg_test4 as $get_preg_test4_item) : ?>
+                      <?php 
+                        foreach ($get_test4 as $key => $value) :
+                          if ( !empty($get_test1)) {
+                            $var = substr($key,0,11);
+                            if ($var =='resp_test4_') {
+                              $id = substr($key,11);
+                              if ( $get_preg_test4_item['id'] == $id ) {
+                                foreach ($get_resp_test4 as $llave) {
+                                  if ($llave['valor'] == $value) {
+                                    switch ($llave['valor']) {
+                                      case '0':
+                                      
+                                      echo "<button class='btn btn-primary' type='button'>";
+                                      echo $llave['nombre'];
+                                      echo " <span class='badge'>";
+                                      echo $value;
+                                      echo "</badge></button>";
+                                      
+                                      echo $get_preg_test4_item['interpretacion'];
+                                      break;
+                                      case '2':
+
+                                      echo "<button class='btn btn-primary' type='button'>";
+                                      echo $llave['nombre'];
+                                      echo " <span class='badge'>";
+                                      echo $value;
+                                      echo "</badge></button>";
+                                      
+                                      echo $get_preg_test4_item['interpretacion'];
+                                      break;
+                                      case '3':
+
+                                      echo "<button class='btn btn-primary' type='button'>";
+                                      echo $llave['nombre'];
+                                      echo " <span class='badge'>";
+                                      echo $value;
+                                      echo "</badge></button>";
+                                      
+                                      echo $get_preg_test4_item['interpretacion'];
+                                      break;
+                                      case '4':
+
+                                      echo "<button class='btn btn-primary' type='button'>";
+                                      echo $llave['nombre'];
+                                      echo " <span class='badge'>";
+                                      echo $value;
+                                      echo "</badge></button>";
+
+                                      echo $get_preg_test4_item['interpretacion'];
+                                      break;
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }                        
+                        endforeach;
+                      ?>
+                      <br>                      
+                    <?php endforeach; ?>
+                  </small>
+                </h3>
+              </div>
+            </div><!-- body -->
+          </div>
+
           <!-- Opciones de TOTALES PRE -->
           <div role="tabpanel" class="tab-pane" id="pre">
             <table class="table table-bordered">
@@ -519,20 +750,20 @@
               <tbody>
                 <tr>
                   <td class="info">Total Pts x 100</td>
-                  <td class="">X / 166</td>
-                  <td class="">X / 44</td>
-                  <td class="">X / 21</td>
-                  <td class="">X / 21</td>
-                  <td class="">X / 16</td>
+                  <td class=""><?php echo ($calificacion+$ansiedad+$depresion+$neurosis);?> / 166</td>
+                  <td class=""><?php echo $calificacion;?> / 44</td>
+                  <td class=""><?php echo $ansiedad;?> / 21</td>
+                  <td class=""><?php echo $depresion;?> / 21</td>
+                  <td class=""><?php echo $neurosis;?> / 16</td>
                   <td class="">X / 64</td>
                 </tr>
                 <tr>
                   <td class="info">%</td>
-                  <td class="default"></td>
-                  <td class="default"></td>
-                  <td class="default"></td>
-                  <td class="default"></td>
-                  <td class="default"></td>
+                  <td class="default"><?php echo number_format(((($calificacion+$ansiedad+$depresion+$neurosis)/166)*100),2) . "%" ;?></td>
+                  <td class="default"><?php echo number_format(($avance*100),2) . "%" ;?></td>
+                  <td class="default"><?php echo number_format(($avanceansiedad*100),2) . "%" ;?></td>
+                  <td class="default"><?php echo number_format(($avancedepresion*100),2) . "%" ;?></td>
+                  <td class="default"><?php echo number_format(($avanceneurosis*100),2) . "%" ;?></td>
                   <td class="default"></td>
                 </tr>
               </tbody>

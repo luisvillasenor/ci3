@@ -10,8 +10,8 @@ class Admin extends CI_Controller {
 
 	function __construct(){/* esta funcion sobre escribe el CI_Controller y toma PHP nativo*/
 		parent::__construct();// Se hacer fererencia al "parent" que en este caso el CI_Controller
-		$this->load->library('session');
-		$this->load->library('encrypt');
+		//$this->load->library('session');
+		//$this->load->library('encrypt');
 	}
 
 public function index() /*Metodo principal se realiza la validacion 

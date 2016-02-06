@@ -65,7 +65,7 @@ class Psic_test4_model extends CI_Model {
 			return $insert_id;
 		}
 
-        public function calificacion($insert_id){
+        public function neurosis($insert_id){
             if ( $insert_id === FALSE ) {
                 show_404();
             }
@@ -86,28 +86,28 @@ class Psic_test4_model extends CI_Model {
                  resp_test4_13 +
                  resp_test4_14 +
                  resp_test4_15 +
-                 resp_test4_16) as calificacion');
+                 resp_test4_16) as neurosis');
             
             $this->db->limit(1);
             $query = $this->db->get_where('psic_test4', array('id' => $insert_id));
             return $query->row_array();
         }
 
-        public function update_calificacion($calificacion,$insert_id){
+        public function update_calificacion($neurosis,$insert_id){
             $this->load->helper('url');
             $data = array(
-                    'calificacion' => $calificacion
+                    'neurosis' => $neurosis
             );
             $this->db->where('id', $insert_id);
             $query = $this->db->update('psic_test4',$data);
         }
 
-        public function avance($insert_id,$val_max,$calificacion){
+        public function avance($insert_id,$val_max,$neurosis){
             if ( $insert_id === FALSE ) {
                 show_404();
             }
 
-            $this->db->select('('.$calificacion.'/'.$val_max.') as avance');
+            $this->db->select('('.$neurosis.'/'.$val_max.') as avance');
            
             $this->db->limit(1);
             $query = $this->db->get_where('psic_test4', array('id' => $insert_id));
@@ -117,7 +117,7 @@ class Psic_test4_model extends CI_Model {
         public function update_avance($avance,$insert_id){
             $this->load->helper('url');
             $data = array(
-                'avance' => $avance                
+                'avanceneurosis' => $avance                
             );
             $this->db->where('id', $insert_id);
             $query = $this->db->update('psic_test4', $data);

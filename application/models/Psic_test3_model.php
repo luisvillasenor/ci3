@@ -56,66 +56,109 @@ class Psic_test3_model extends CI_Model {
         */
 		public function set_psic_test3($resp_test3)
 		{
-		    $this->load->helper('url');
-
-            $this->db->insert('psic_test3', $resp_test3);
+		    $this->db->insert('psic_test3', $resp_test3);
 	    	
             $insert_id = $this->db->insert_id();
 
 			return $insert_id;
 		}
 
-        public function calificacion($insert_id){
+        public function ansiedad($insert_id){
             if ( $insert_id === FALSE ) {
                 show_404();
             }
 
             $this->db->select('
                 (resp_test3_1 +
-                 resp_test3_2 +
                  resp_test3_3 +
-                 resp_test3_4 +
                  resp_test3_5 +
-                 resp_test3_6 +
                  resp_test3_7 +
-                 resp_test3_8 +
                  resp_test3_9 +
-                 resp_test3_10 +
                  resp_test3_11 +
-                 resp_test3_12 +
-                 resp_test3_13 +
-                 resp_test3_14) as calificacion');
+                 resp_test3_13) as ansiedad');
             
             $this->db->limit(1);
             $query = $this->db->get_where('psic_test3', array('id' => $insert_id));
             return $query->row_array();
         }
 
-        public function update_calificacion($calificacion,$insert_id){
+        public function update_ansiedad($ansiedad,$insert_id){
             $this->load->helper('url');
             $data = array(
-                    'calificacion' => $calificacion
+                    'ansiedad' => $ansiedad
             );
             $this->db->where('id', $insert_id);
             $query = $this->db->update('psic_test3',$data);
         }
 
-        public function avance($insert_id,$val_max,$calificacion){
+        public function avance_ansiedad($insert_id,$val_max,$ansiedad){
             if ( $insert_id === FALSE ) {
                 show_404();
             }
 
-            $this->db->select('('.$calificacion.'/'.$val_max.') as avance');
+            $this->db->select('('.$ansiedad.'/'.$val_max.') as avance');
            
             $this->db->limit(1);
             $query = $this->db->get_where('psic_test3', array('id' => $insert_id));
             return $query->row_array();
         }
 
-        public function update_avance($avance,$insert_id){
+        public function update_avance_ansiedad($avanceansiedad,$insert_id){
             $this->load->helper('url');
             $data = array(
-                'avance' => $avance                
+                'avanceansiedad' => $avanceansiedad                
+            );
+            $this->db->where('id', $insert_id);
+            $query = $this->db->update('psic_test3', $data);
+        }
+
+
+
+
+        public function depresion($insert_id){
+            if ( $insert_id === FALSE ) {
+                show_404();
+            }
+
+            $this->db->select('
+                (resp_test3_2 +
+                 resp_test3_4 +
+                 resp_test3_6 +
+                 resp_test3_8 +
+                 resp_test3_10 +
+                 resp_test3_12 +
+                 resp_test3_14) as depresion');
+            
+            $this->db->limit(1);
+            $query = $this->db->get_where('psic_test3', array('id' => $insert_id));
+            return $query->row_array();
+        }
+
+        public function update_depresion($depresion,$insert_id){
+            $this->load->helper('url');
+            $data = array(
+                    'depresion' => $depresion
+            );
+            $this->db->where('id', $insert_id);
+            $query = $this->db->update('psic_test3',$data);
+        }
+
+        public function avance_depresion($insert_id,$val_max,$depresion){
+            if ( $insert_id === FALSE ) {
+                show_404();
+            }
+
+            $this->db->select('('.$depresion.'/'.$val_max.') as avance');
+           
+            $this->db->limit(1);
+            $query = $this->db->get_where('psic_test3', array('id' => $insert_id));
+            return $query->row_array();
+        }
+
+        public function update_avance_depresion($avancedepresion,$insert_id){
+            $this->load->helper('url');
+            $data = array(
+                'avancedepresion' => $avancedepresion                
             );
             $this->db->where('id', $insert_id);
             $query = $this->db->update('psic_test3', $data);
