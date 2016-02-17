@@ -20,6 +20,30 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/navigation');
+		$this->load->view('dashboard/index');
+		$this->load->view('dashboard/footer');
+	}
+	public function tables()
+	{
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/navigation');
+		$this->load->view('dashboard/tables');
+		$this->load->view('dashboard/footer');
+	}	
+	public function charts()
+	{
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/navigation');
+		$this->load->view('dashboard/charts');
+		$this->load->view('dashboard/footer');
+	}	
+	public function forms()
+	{
+		$this->load->view('dashboard/header');
+		$this->load->view('dashboard/navigation');
+		$this->load->view('dashboard/forms');
+		$this->load->view('dashboard/footer');
 	}
 }
