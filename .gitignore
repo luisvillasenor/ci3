@@ -8,11 +8,11 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 
-user_guide/
+user_guide/*
 application/config/config.php
 application/config/database.php
 
-bootstrap-3.3.5-dist/
+bootstrap-3.3.5-dist/*
 
 *.js
 *.css
